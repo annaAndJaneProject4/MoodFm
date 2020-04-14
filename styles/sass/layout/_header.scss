@@ -1,11 +1,16 @@
 header {
     height: 100vh;
-    background-color: #ffefdf;
+    background-color: $colorBeige;
     display: flex;
     align-items: flex-end;
     padding-bottom: 1rem;
 
     .headerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .headerContent {
         display: flex;
         align-items: flex-end;
         justify-content: flex-end;
@@ -22,7 +27,8 @@ header {
     }
 
     .headerTitle {
-        color: #333333;
+        font-family: $fontPrimary;
+        color: $colorDark;
         font-size: 8.5rem;
         display: flex;
         flex-direction: column;
@@ -32,7 +38,7 @@ header {
     }
 
     .headerTitleBox {
-        outline: 4px double #9ae1e5;
+        outline: 4px double $colorBlue;
         outline-offset: -15px;
         padding: 4rem;
         background-color: rgba(246, 246, 246, 0.6);
@@ -43,8 +49,8 @@ header {
 		position: absolute;
 		width: 100px;
 		height: 4px;
-		border-top: 1px solid #333333;
-		border-bottom: 1px solid #333333;
+		border-top: 1px solid $colorDark;
+		border-bottom: 1px solid $colorDark;
 		padding-bottom: 0.5px;  
     }
 
@@ -58,10 +64,20 @@ header {
 
 	h2.border span {
 		font-size: 18px;
-		letter-spacing: 3px;
+        letter-spacing: 3px;
 	}
 
     h3 {
         margin-top: 10rem;
+        align-self: flex-end;
+    }
+
+    .headerStart {
+        margin: 0 auto;
+    }
+
+    i {
+        font-size: 4rem;
+        color: $colorBlueLight;
     }
 }
