@@ -1,0 +1,83 @@
+header {
+    height: 100vh;
+    background-color: $colorBeige;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 1rem;
+
+    .headerContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .headerContent {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    
+    .headerImage {
+        width: 100%;
+    }
+
+    img {
+        width: 55rem;
+    }
+
+    .headerTitle {
+        font-family: $fontPrimary;
+        color: $colorDark;
+        font-size: 8.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .headerTitleBox {
+        outline: 4px double $colorBlue;
+        outline-offset: -15px;
+        padding: 4rem;
+        background-color: rgba(246, 246, 246, 0.6);
+    }
+
+    h2.border::before, h2.border::after {
+        content: " ";
+		position: absolute;
+		width: 100px;
+		height: 4px;
+		border-top: 1px solid $colorDark;
+		border-bottom: 1px solid $colorDark;
+		padding-bottom: 0.5px;  
+    }
+
+    h2.border:before {
+		margin: 20.5px 0 0 -110px;
+	}
+
+	h2.border:after {
+		margin: 20.5px 0 0 10px;
+	}
+
+	h2.border span {
+		font-size: 18px;
+        letter-spacing: 3px;
+	}
+
+    h3 {
+        margin-top: 10rem;
+        align-self: flex-end;
+    }
+
+    .headerStart {
+        margin: 0 auto;
+    }
+
+    i {
+        font-size: 4rem;
+        color: $colorBlueLight;
+    }
+}
