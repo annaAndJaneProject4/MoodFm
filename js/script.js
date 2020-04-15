@@ -1,16 +1,112 @@
-// PSEUDO CODE //
+// point system
+// 0 - 10 points
+// 8-10 -> motivation
+// 5-7 -> happy
+// 2-4 -> sad
+// 0-1 -> angry
 
-// A landing page with the name of the app "Moodusic" and a short description "Music to Match Your Mood" underneath the title welcome the user to the page
-// User clicks on an a button or icon taking them to the main section of the page, prompting them to answer the 1st question
-// As soon as user has given their answer to the question, the page will automatically scroll to the next question
-// If user changes their mind about an answer, they can manually scroll back and reclick another option
-// When user is finished the short questionaire, they can submit their answers by clicking on a submit button
-// Javascript will process everything and display on the page, the song information and their user will be able to click on the song and hear a clip of the song that was chosen to best reflect their mood based on their result
-// There will be 2 buttons for the user to choose from, they can either redo the quiz or be matched with another song 
+// ------ NAME SPACE OBJECT ------ //
+const moodFm = {};
 
-const musicApp = {};
+// ------ VARIABLES ------ //
+moodFm.results = {
+    moodSad: ['sad', 'miss', 'tear', 'lonely', 'sorry'],
+    moodHappy: ['happy', 'joy', 'sweet', 'party', 'dance', 'excited'],
+    moodAngry: ['angry', 'hate', 'rage', 'kill', 'death'],
+    moodMotivation: ['strong', 'power', 'win', 'brave', 'survive']
+}
 
-musicApp.getMusicResults = (query) => {
+let userScore = 0;
+
+moodFm.calcScore1 = () => {
+    $('#questionOne a').on('click', function(e) {
+        e.preventDefault();
+        const questionOneResult = $(this).attr("data-value");
+        if (questionOneResult === 'redColor') {
+            userScore = 0;
+        } else if (questionOneResult === 'greyColor') {
+            userScore += 1;
+        } else if (questionOneResult === 'yellowColor') {
+            userScore += 2;
+        } else if (questionOneResult === 'orangeColor') {
+            userScore += 3;
+        }
+        moodFm.scrollToSection('#questionTwo');
+    })
+    return userScore;
+}
+
+moodFm.calcScore2 = () => {
+    $('#questionTwo a').on('click', function (e) {
+        e.preventDefault();
+        console.log(userScore);
+        const questionTwoResult = $(this).attr("data-value");
+        if (questionTwoResult === 'angryFace') {
+            userScore += 0;
+        } else if (questionTwoResult === 'sadFace') {
+            userScore += 1;
+        } else if (questionTwoResult === 'happyFace') {
+            userScore += 2;
+        } else if (questionTwoResult === 'motivationFace') {
+            userScore += 3;
+        }
+        moodFm.scrollToSection('#questionThree');
+    })
+    return userScore;
+}
+
+moodFm.calcScore3 = () => {
+    $('#questionThree a').on('click', function (e) {
+        e.preventDefault();
+        console.log(userScore);
+        const questionThreeResult = $(this).attr("data-value");
+        if (questionThreeResult === 'cloudyWeather' || questionThreeResult === 'rainingWeather') {
+            userScore += 0;
+        } else if (questionThreeResult === 'snowingWeather') {
+            userScore += 1;
+        } else if (questionThreeResult === 'sunnyWeather') {
+            userScore += 2;
+        }
+        moodFm.scrollToSection('#questionFour');
+    })
+    return userScore
+}
+
+moodFm.calcScore4 = () => {
+    $('#questionFour a').on('click', function (e) {
+        e.preventDefault();
+        console.log(userScore);
+        const questionFourResult = $(this).attr("data-value");
+        if (questionFourResult === 'nothingFood') {
+            userScore += 0;
+        } else if (questionFourResult === 'comfortFood') {
+            userScore += 1;
+        } else if (questionFourResult === 'iceCreamFood') {
+            userScore += 2;
+        } else if (questionFourResult === 'saladFood') {
+            userScore += 3;
+        }
+        moodFm.scrollToSection('#result');
+    })
+    return userScore
+}
+
+// ------ SMOOTH SCROLL FUNCTION ------ //
+moodFm.scroll = (scrollTo) => {
+    $('html, body').stop().animate({
+        scrollTop: $(scrollTo).offset().top
+    }, 800);
+};
+
+moodFm.scrollToSection = (sectionName) => {
+    $('.headerStart, .startIcon, section').on('click', function (e) {
+        e.preventDefault();
+        moodFm.scroll(sectionName);
+    });
+};
+
+// ------ AJAX CALL ------ //
+moodFm.getMusicResults = (query) => {
     $.ajax({
         url: `https://itunes.apple.com/search`,
         method: 'GET',
@@ -19,6 +115,7 @@ musicApp.getMusicResults = (query) => {
             term: query,
             limit: 10,
             media: 'music',
+            attribute: 'songTerm',
             format: 'json',
         }
     }).then((results) => {
@@ -26,10 +123,17 @@ musicApp.getMusicResults = (query) => {
     })
 }
 
-musicApp.init = () => {
-    musicApp.getMusicResults('happy');
+// ------ INIT FUNCTION ------ //
+moodFm.init = () => {
+    moodFm.scrollToSection('main');
+    moodFm.getMusicResults('excited');
+    moodFm.calcScore1();
+    moodFm.calcScore2();
+    moodFm.calcScore3();
+    moodFm.calcScore4();
 }
 
-$(function () {
-    musicApp.init();
+// ------ DOCUMENT READY ------ //
+$(() => {
+    moodFm.init();
 })
