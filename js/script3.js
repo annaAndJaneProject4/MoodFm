@@ -18,19 +18,28 @@ moodFm.results = {
 
 let userScore = 0;
 
+moodFm.calcUserScore = (questionNumResult, optionOne, optionTwo, optionThree, optionFour) => {
+    switch (questionNumResult) {
+        case optionOne:
+            userScore;
+            break;
+        case optionTwo:
+            userScore += 1;
+            break;
+        case optionThree:
+            userScore += 2;
+            break;
+        case optionFour:
+            userScore += 3;
+            break;
+    }
+}
+
 moodFm.calcScore1 = () => {
     $('#questionOne a').on('click', function(e) {
         e.preventDefault();
-        const questionOneResult = $(this).attr("data-value");
-        if (questionOneResult === 'redColor') {
-            userScore;
-        } else if (questionOneResult === 'greyColor') {
-            userScore += 1;
-        } else if (questionOneResult === 'yellowColor') {
-            userScore += 2;
-        } else if (questionOneResult === 'orangeColor') {
-            userScore += 3;
-        }
+        const questionOneResult = $(this).attr('data-value');
+        moodFm.calcUserScore(questionOneResult, 'redColor', 'greyColor', 'yellowColor', 'orangeColor');
         moodFm.scrollToSection('#questionTwo');
     })
     return userScore;
@@ -39,17 +48,9 @@ moodFm.calcScore1 = () => {
 moodFm.calcScore2 = () => {
     $('#questionTwo a').on('click', function (e) {
         e.preventDefault();
-        console.log(userScore);
-        const questionTwoResult = $(this).attr("data-value");
-        if (questionTwoResult === 'angryFace') {
-            userScore;
-        } else if (questionTwoResult === 'sadFace') {
-            userScore += 1;
-        } else if (questionTwoResult === 'happyFace') {
-            userScore += 2;
-        } else if (questionTwoResult === 'motivatedFace') {
-            userScore += 3;
-        }
+        // console.log(userScore);
+        const questionTwoResult = $(this).attr('data-value');
+        moodFm.calcUserScore(questionTwoResult, 'angryFace', 'sadFace', 'happyFace', 'motivatedFace');
         moodFm.scrollToSection('#questionThree');
     })
     return userScore;
@@ -58,38 +59,35 @@ moodFm.calcScore2 = () => {
 moodFm.calcScore3 = () => {
     $('#questionThree a').on('click', function (e) {
         e.preventDefault();
-        console.log(userScore);
-        const questionThreeResult = $(this).attr("data-value");
-        if (questionThreeResult === 'cloudyWeather' || questionThreeResult === 'rainingWeather') {
-            userScore;
-        } else if (questionThreeResult === 'snowingWeather') {
-            userScore += 1;
-        } else if (questionThreeResult === 'sunnyWeather') {
-            userScore += 2;
+        // console.log(userScore);
+        const questionThreeResult = $(this).attr('data-value');
+        switch (questionThreeResult) {
+            case 'cloudyWeather':
+            case 'rainingWeather':
+                userScore;
+                break;
+            case 'snowingWeather':
+                userScore += 1;
+                break;
+            case 'sunnyWeather':
+                userScore += 2;
+                break;
         }
         moodFm.scrollToSection('#questionFour');
     })
-    return userScore
+    return userScore;
 }
 
 moodFm.calcScore4 = () => {
     $('#questionFour a').on('click', function (e) {
         e.preventDefault();
-        console.log(userScore);
-        const questionFourResult = $(this).attr("data-value");
-        if (questionFourResult === 'nothingFood') {
-            userScore;
-        } else if (questionFourResult === 'comfortFood') {
-            userScore += 1;
-        } else if (questionFourResult === 'iceCreamFood') {
-            userScore += 2;
-        } else if (questionFourResult === 'saladFood') {
-            userScore += 3;
-        }
+        // console.log(userScore);
+        const questionFourResult = $(this).attr('data-value');
+        moodFm.calcUserScore(questionFourResult, 'nothingFood', 'comfortFood', 'iceCreamFood', 'saladFood');    
         moodFm.scrollToSection('#result');
         moodFm.displayUserScore();
     })
-    return userScore
+    return userScore;
 }
 
 moodFm.displayUserScore = () => {

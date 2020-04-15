@@ -21,15 +21,20 @@ let userScore = 0;
 moodFm.calcScore1 = () => {
     $('#questionOne a').on('click', function(e) {
         e.preventDefault();
-        const questionOneResult = $(this).attr("data-value");
-        if (questionOneResult === 'redColor') {
-            userScore;
-        } else if (questionOneResult === 'greyColor') {
-            userScore += 1;
-        } else if (questionOneResult === 'yellowColor') {
-            userScore += 2;
-        } else if (questionOneResult === 'orangeColor') {
-            userScore += 3;
+        const questionOneResult = $(this).attr('data-value');
+        switch(questionOneResult) {
+            case 'redColor':
+                userScore;
+                break;
+            case 'greyColor': 
+                userScore += 1;
+                break;
+            case 'yellowColor':
+                userScore += 2;
+                break;
+            case 'orangeColor':
+                userScore += 3;
+                break;
         }
         moodFm.scrollToSection('#questionTwo');
     })
@@ -40,15 +45,20 @@ moodFm.calcScore2 = () => {
     $('#questionTwo a').on('click', function (e) {
         e.preventDefault();
         console.log(userScore);
-        const questionTwoResult = $(this).attr("data-value");
-        if (questionTwoResult === 'angryFace') {
-            userScore;
-        } else if (questionTwoResult === 'sadFace') {
-            userScore += 1;
-        } else if (questionTwoResult === 'happyFace') {
-            userScore += 2;
-        } else if (questionTwoResult === 'motivatedFace') {
-            userScore += 3;
+        const questionTwoResult = $(this).attr('data-value');
+        switch (questionTwoResult) {
+            case 'angryFace':
+                userScore;
+                break;
+            case 'sadFace':
+                userScore += 1;
+                break;
+            case 'happyFace':
+                userScore += 2;
+                break;
+            case 'motivatedFace':
+                userScore += 3;
+                break;
         }
         moodFm.scrollToSection('#questionThree');
     })
@@ -59,13 +69,18 @@ moodFm.calcScore3 = () => {
     $('#questionThree a').on('click', function (e) {
         e.preventDefault();
         console.log(userScore);
-        const questionThreeResult = $(this).attr("data-value");
-        if (questionThreeResult === 'cloudyWeather' || questionThreeResult === 'rainingWeather') {
-            userScore;
-        } else if (questionThreeResult === 'snowingWeather') {
-            userScore += 1;
-        } else if (questionThreeResult === 'sunnyWeather') {
-            userScore += 2;
+        const questionThreeResult = $(this).attr('data-value');
+        switch (questionThreeResult) {
+            case 'cloudyWeather':
+            case 'rainingWeather':
+                userScore;
+                break;
+            case 'snowingWeather':
+                userScore += 1;
+                break;
+            case 'sunnyWeather':
+                userScore += 2;
+                break;
         }
         moodFm.scrollToSection('#questionFour');
     })
@@ -76,15 +91,20 @@ moodFm.calcScore4 = () => {
     $('#questionFour a').on('click', function (e) {
         e.preventDefault();
         console.log(userScore);
-        const questionFourResult = $(this).attr("data-value");
-        if (questionFourResult === 'nothingFood') {
-            userScore;
-        } else if (questionFourResult === 'comfortFood') {
-            userScore += 1;
-        } else if (questionFourResult === 'iceCreamFood') {
-            userScore += 2;
-        } else if (questionFourResult === 'saladFood') {
-            userScore += 3;
+        const questionFourResult = $(this).attr('data-value');
+        switch (questionFourResult) {
+            case 'nothingFood':
+                userScore;
+                break;
+            case 'comfortFood':
+                userScore += 1;
+                break;
+            case 'iceCreamFood':
+                userScore += 2;
+                break;
+            case 'saladFood':
+                userScore += 3;
+                break;
         }
         moodFm.scrollToSection('#result');
         moodFm.displayUserScore();
@@ -106,7 +126,7 @@ moodFm.scroll = (scrollTo) => {
 };
 
 moodFm.scrollToSection = (sectionName) => {
-    $('.headerStart, .startIcon, li').on('click', function (e) {
+    $('.headerStart, .startIcon, section').on('click', function (e) {
         e.preventDefault();
         moodFm.scroll(sectionName);
     });
@@ -132,7 +152,7 @@ moodFm.getMusicResults = (query) => {
 
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
-    moodFm.scrollToSection('#questionOne');
+    moodFm.scrollToSection('main');
     moodFm.getMusicResults('excited');
     moodFm.calcScore1();
     moodFm.calcScore2();

@@ -1,0 +1,37 @@
+main {
+   text-align: center;
+}
+
+.sectionOne {
+    background-color: $colorBlueLight;
+    height: 100vh;
+}
+
+.sectionTwo {
+    background-color: $colorBeige;
+    height: 100vh;
+
+    ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 13rem;
+    }
+}
+
+.sectionThree {
+    background-color: $colorBlueLight;
+    height: 100vh;
+}
+
+.sectionFour {
+    background-color: $colorBeige;
+    height: 100vh;
+}
+
+.sectionFive {
+    background-color: $colorBlueLight;
+    height: 100vh;
+}
