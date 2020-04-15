@@ -44,6 +44,10 @@ header {
         background-color: rgba(246, 246, 246, 0.6);
     }
 
+    h2 {
+        margin: 0.5rem;
+    }
+
     h2.border::before, h2.border::after {
         content: " ";
 		position: absolute;
