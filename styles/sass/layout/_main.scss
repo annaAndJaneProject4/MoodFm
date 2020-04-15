@@ -4,10 +4,12 @@ main {
 
 .sectionOne {
     background-color: $colorBlueLight;
+    height: 100vh;
 }
 
 .sectionTwo {
     background-color: $colorBeige;
+    height: 100vh;
 
     ul {
         display: flex;
@@ -21,8 +23,15 @@ main {
 
 .sectionThree {
     background-color: $colorBlueLight;
+    height: 100vh;
 }
 
 .sectionFour {
     background-color: $colorBeige;
+    height: 100vh;
+}
+
+.sectionFive {
+    background-color: $colorBlueLight;
+    height: 100vh;
 }

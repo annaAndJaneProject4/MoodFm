@@ -47,21 +47,21 @@
     </header>
 
     <main id="#mainContent">
-        <section class="sectionOne">
+        <section class="sectionOne" id="questionOne">
             <div class="wrapper">
                 <h4>Pick a color</h4>
                 <ul>
                     <li>
-                        <a href="#questionTwo" aria-label="red">Red</a>
+                        <a href="#questionTwo" data-value="redColor" aria-label="red">Red</a>
                     </li>
                     <li>
-                        <a href="#questionTwo" aria-label="yellow">Yellow</a>
+                        <a href="#questionTwo" data-value="yellowColor" aria-label="yellow">Yellow</a>
                     </li>
                     <li>
-                        <a href="#questionTwo" aria-label="orange">Orange</a>
+                        <a href="#questionTwo" data-value="orangeColor" aria-label="orange">Orange</a>
                     </li>
                     <li>
-                        <a href="#questionTwo" aria-label="grey">Grey</a>
+                        <a href="#questionTwo" data-value="greyColor" aria-label="grey">Grey</a>
                     </li>
                 </ul>
             </div>
@@ -72,19 +72,19 @@
                 <ul>
                     <!-- icons by Alfonso López-Sanz from the Noun Project -->
                     <li>
-                        <a href="#questionThree" aria-label="option one"><img src="./assets/happyFace.svg"
+                        <a href="#questionThree" data-value="happyFace" aria-label="option one"><img src="./assets/happyFace.svg"
                                 alt="sunshine happy face"></a>
                     </li>
                     <li>
-                        <a href="#questionThree" aria-label="option two"><img src="./assets/fullFace.svg"
+                        <a href="#questionThree" data-value="motivatedFace" aria-label="option two"><img src="./assets/motivatedFace.svg"
                                 alt="full battery energetic face"></a>
                     </li>
                     <li>
-                        <a href="#questionThree" aria-label="option three"><img src="./assets/sadFace.svg"
+                        <a href="#questionThree" data-value="sadFace" aria-label="option three"><img src="./assets/sadFace.svg"
                                 alt="raining sad face"></a>
                     </li>
                     <li>
-                        <a href="#questionThree" aria-label="option four"><img src="./assets/angerFace.svg"
+                        <a href="#questionThree" data-value="angryFace" aria-label="option four"><img src="./assets/angryFace.svg"
                                 alt="angry face"></a>
                     </li>
                 </ul>
@@ -95,35 +95,35 @@
                 <h4>Current weather?</h4>
                 <ul>
                     <li>
-                        <a href="#questionFour">Sunny</a>
+                        <a href="#questionFour" data-value="sunnyWeather">Sunny</a>
                     </li>
                     <li>
-                        <a href="#questionFour">Raining</a>
+                        <a href="#questionFour" data-value="rainingWeather">Raining</a>
                     </li>
                     <li>
-                        <a href="#questionFour">Snowing</a>
+                        <a href="#questionFour" data-value="snowingWeather">Snowing</a>
                     </li>
                     <li>
-                        <a href="#questionFour">Cloudy</a>
+                        <a href="#questionFour" data-value="cloudyWeather">Cloudy</a>
                     </li>
                 </ul>
             </div>
         </section>
         <section class="sectionFour" id="questionFour">
             <div class="wrapper">
-                <h4>Craving for...?</h4>
+                <h4>Craving...?</h4>
                 <ul>
                     <li>
-                        <a href="#result">Salad</a>
+                        <a href="#result" data-value="saladFood">Salad</a>
                     </li>
                     <li>
-                        <a href="#result">Comfort food</a>
+                        <a href="#result" data-value="comfortFood">Comfort food</a>
                     </li>
                     <li>
-                        <a href="#result">Ice cream</a>
+                        <a href="#result" data-value="iceCreamFood">Ice cream</a>
                     </li>
                     <li>
-                        <a href="#result">Nothing</a>
+                        <a href="#result" data-value="nothingFood">Nothing</a>
                     </li>
                 </ul>
             </div>
@@ -132,7 +132,7 @@
         <section class="sectionFive" id="result">
             <div class="wrapper">
                 <div class="quizResult">
-
+                    <p>Result</p>
                 </div>
             </div>
         </section>
@@ -144,7 +144,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 
     <!-- javascript link -->
-    <script src="js/script.js"></script>
+    <script src="js/script3.js"></script>
 </body>
 
 </html>

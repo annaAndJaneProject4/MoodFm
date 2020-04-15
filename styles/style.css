@@ -278,7 +278,6 @@ h2 {
   font-size: 2rem;
   font-weight: 600;
   font-style: italic;
-  margin: 0.5rem;
   text-align: center;
 }
 
@@ -382,6 +381,10 @@ header .headerTitleBox {
   background-color: rgba(246, 246, 246, 0.6);
 }
 
+header h2 {
+  margin: 0.5rem;
+}
+
 header h2.border::before, header h2.border::after {
   content: " ";
   position: absolute;
@@ -426,10 +429,12 @@ main {
 
 .sectionOne {
   background-color: #9ae1e5bb;
+  height: 100vh;
 }
 
 .sectionTwo {
   background-color: #ffefdf;
+  height: 100vh;
 }
 
 .sectionTwo ul {
@@ -447,8 +452,15 @@ main {
 
 .sectionThree {
   background-color: #9ae1e5bb;
+  height: 100vh;
 }
 
 .sectionFour {
   background-color: #ffefdf;
+  height: 100vh;
+}
+
+.sectionFive {
+  background-color: #9ae1e5bb;
+  height: 100vh;
 }
