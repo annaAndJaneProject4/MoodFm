@@ -261,6 +261,14 @@ textarea {
   }
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", serif;
+}
+
 h1 {
   font-weight: 500;
   text-shadow: 4px 5px #e6e6d8, 6px 7px #c6a39a;
@@ -279,6 +287,15 @@ h3 {
   font-style: italic;
   font-weight: 400;
   margin-right: 5rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
 }
 
 .wrapper {
@@ -342,7 +359,6 @@ header img {
 }
 
 header .headerTitle {
-  font-family: "Playfair Display", serif;
   color: #333333;
   font-size: 8.5rem;
   display: -webkit-box;
@@ -402,4 +418,37 @@ header .headerStart {
 header i {
   font-size: 4rem;
   color: #9ae1e5bb;
+}
+
+main {
+  text-align: center;
+}
+
+.sectionOne {
+  background-color: #9ae1e5bb;
+}
+
+.sectionTwo {
+  background-color: #ffefdf;
+}
+
+.sectionTwo ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sectionTwo img {
+  width: 13rem;
+}
+
+.sectionThree {
+  background-color: #9ae1e5bb;
+}
+
+.sectionFour {
+  background-color: #ffefdf;
 }

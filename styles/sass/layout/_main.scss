@@ -1,0 +1,28 @@
+main {
+   text-align: center;
+}
+
+.sectionOne {
+    background-color: $colorBlueLight;
+}
+
+.sectionTwo {
+    background-color: $colorBeige;
+
+    ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 13rem;
+    }
+}
+
+.sectionThree {
+    background-color: $colorBlueLight;
+}
+
+.sectionFour {
+    background-color: $colorBeige;
+}
