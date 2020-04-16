@@ -1,102 +1,95 @@
 // point system
-// 0 - 10 points
-// 8-10 -> motivation
-// 5-7 -> happy
-// 2-4 -> sad
-// 0-1 -> angry
+// 1 - 12 points
+// 10-12 -> motivation
+// 7-9 -> happy
+// 4-6 -> sad
+// 0-3 -> angry
 
 // ------ NAME SPACE OBJECT ------ //
 const moodFm = {};
 
-// ------ VARIABLES ------ //
+// ------ VARIABLES/PROPERTIES THAT LIVE ON THE NAME SPACE OBJECT ------ //
 moodFm.results = {
-    moodSad: ['sad', 'miss', 'tear', 'lonely', 'sorry'],
-    moodHappy: ['happy', 'joy', 'party', 'dance', 'excited'],
-    moodAngry: ['angry', 'hate', 'rage', 'kill', 'death'],
-    moodMotivation: ['strong', 'power', 'win', 'brave', 'survive']
-}
+    moodSad: ["sad", "miss", "tear", "lonely", "sorry"],
+    moodHappy: ["happy", "joy", "party", "dance", "excited"],
+    moodAngry: ["angry", "hate", "rage", "kill", "death"],
+    moodMotivation: ["strong", "power", "win", "brave", "survive"],
+};
 
-let userScore = 0;
+// initial starting value before any clicks are made by the user
+moodFm.userScore = 0;
 
-moodFm.calcScore1 = () => {
-    $('#questionOne a').on('click', function(e) {
-        e.preventDefault();
-        const questionOneResult = $(this).attr("data-value");
-        if (questionOneResult === 'redColor') {
-            userScore;
-        } else if (questionOneResult === 'greyColor') {
-            userScore += 1;
-        } else if (questionOneResult === 'yellowColor') {
-            userScore += 2;
-        } else if (questionOneResult === 'orangeColor') {
-            userScore += 3;
+moodFm.totalAngry = 0;
+moodFm.totalSad = 0;
+moodFm.totalHappy = 0;
+moodFm.totalMotivation = 0;
+
+// user's choices will start off as an empty array
+moodFm.userChoices = []
+
+// array of nested objects which store the question number and an array of possible options for each question
+moodFm.questionInfo = [
+    {
+        question: "#questionOne",
+        option: ["redColor", "greyColor", "yellowColor", "orangeColor"],
+    },
+    {
+        question: "#questionTwo",
+        option: ["angryFace", "sadFace", "happyFace", "motivatedFace"],
+    },
+    {
+        question: "#questionThree",
+        option: ["rainingWeather", "cloudyWeather", "snowingWeather", "sunnyWeather"],
+    },
+    {
+        question: "#questionFour",
+        option: ["nothingFood", "comfortFood", "iceCreamFood", "saladFood"],
+    },
+];
+
+// loops and checks if each array item in moodFm.userChoices is strictly equal to every value of each options key in moodFm.questionInfo 
+// when the condition is true and a match is found, the variables moodFm.totalAngry, moodFm.totalSad, etc. will update and be incremented by 1
+moodFm.countUserChoices = () => {
+    for (let i = 0; i < moodFm.userChoices.length; i++) {
+        if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
+            moodFm.totalAngry++;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[1]) {
+            moodFm.totalSad++;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[2]) {
+            moodFm.totalHappy++;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[3]) {
+            moodFm.totalMotivation++;
         }
-        moodFm.scrollToSection('#questionTwo');
-    })
-    return userScore;
-}
+    }
+};
 
-moodFm.calcScore2 = () => {
-    $('#questionTwo a').on('click', function (e) {
+moodFm.setupClickOnLastQuestion = () => {
+    $('button').on('click', function (e) {
         e.preventDefault();
-        console.log(userScore);
-        const questionTwoResult = $(this).attr("data-value");
-        if (questionTwoResult === 'angryFace') {
-            userScore;
-        } else if (questionTwoResult === 'sadFace') {
-            userScore += 1;
-        } else if (questionTwoResult === 'happyFace') {
-            userScore += 2;
-        } else if (questionTwoResult === 'motivatedFace') {
-            userScore += 3;
-        }
-        moodFm.scrollToSection('#questionThree');
+        moodFm.countUserChoices();
     })
-    return userScore;
 }
 
-moodFm.calcScore3 = () => {
-    $('#questionThree a').on('click', function (e) {
-        e.preventDefault();
-        console.log(userScore);
-        const questionThreeResult = $(this).attr("data-value");
-        if (questionThreeResult === 'cloudyWeather' || questionThreeResult === 'rainingWeather') {
-            userScore;
-        } else if (questionThreeResult === 'snowingWeather') {
-            userScore += 1;
-        } else if (questionThreeResult === 'sunnyWeather') {
-            userScore += 2;
-        }
-        moodFm.scrollToSection('#questionFour');
+moodFm.setupClickHandler = () => {
+    $(moodFm.questionInfo).each(function (i) {
+        $(`${moodFm.questionInfo[i].question} a`).on('click', function (e) {
+            e.preventDefault();
+            const optionChosen = $(this).attr("data-value");
+            moodFm.userChoices[i] = optionChosen;
+            if (i < moodFm.questionInfo.length - 1) {
+                moodFm.scrollToSection(`${moodFm.questionInfo[i + 1].question}`);
+            } else {
+                moodFm.scrollToSection("#result");
+            }
+        })
     })
-    return userScore
-}
+};
 
-moodFm.calcScore4 = () => {
-    $('#questionFour a').on('click', function (e) {
-        e.preventDefault();
-        console.log(userScore);
-        const questionFourResult = $(this).attr("data-value");
-        if (questionFourResult === 'nothingFood') {
-            userScore;
-        } else if (questionFourResult === 'comfortFood') {
-            userScore += 1;
-        } else if (questionFourResult === 'iceCreamFood') {
-            userScore += 2;
-        } else if (questionFourResult === 'saladFood') {
-            userScore += 3;
-        }
-        moodFm.scrollToSection('#result');
-        moodFm.displayUserScore();
-    })
-    return userScore
-}
-
-moodFm.displayUserScore = () => {
-    const totalUserScore = moodFm.calcScore4();
-    const moodResult = `<h2>Your Score is ${totalUserScore}</h2>`
-    $('.quizResult').html(moodResult);
-}
+moodFm.displayUserResult = () => {
+    const totalUserScore = moodFm.calcUserScore();
+    const finalResult = `<h2>Your Score is ${totalUserScore}</h2>`;
+    $(".quizResult").html(finalResult);
+};
 
 // ------ SMOOTH SCROLL FUNCTION ------ //
 moodFm.scroll = (scrollTo) => {
@@ -106,7 +99,7 @@ moodFm.scroll = (scrollTo) => {
 };
 
 moodFm.scrollToSection = (sectionName) => {
-    $('.headerStart, .startIcon, li').on('click', function (e) {
+    $(".headerStart, .startIcon, li").on("click", (e) => {
         e.preventDefault();
         moodFm.scroll(sectionName);
     });
@@ -116,31 +109,29 @@ moodFm.scrollToSection = (sectionName) => {
 moodFm.getMusicResults = (query) => {
     $.ajax({
         url: `https://itunes.apple.com/search`,
-        method: 'GET',
-        dataType: 'json',
+        method: "GET",
+        dataType: "json",
         data: {
             term: query,
             limit: 10,
-            media: 'music',
-            attribute: 'songTerm',
-            format: 'json',
-        }
+            media: "music",
+            attribute: "songTerm",
+            format: "json",
+        },
     }).then((results) => {
         console.log(results);
-    })
-}
+    });
+};
 
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
-    moodFm.scrollToSection('#questionOne');
-    moodFm.getMusicResults('excited');
-    moodFm.calcScore1();
-    moodFm.calcScore2();
-    moodFm.calcScore3();
-    moodFm.calcScore4();
-}
+    moodFm.scrollToSection("#questionOne");
+    moodFm.getMusicResults("excited");
+    moodFm.setupClickOnLastQuestion();
+    moodFm.setupClickHandler();
+};
 
 // ------ DOCUMENT READY ------ //
 $(() => {
     moodFm.init();
-})
+});
