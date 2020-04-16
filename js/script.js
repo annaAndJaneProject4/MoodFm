@@ -24,9 +24,6 @@ moodFm.totalSad = 0;
 moodFm.totalHappy = 0;
 moodFm.totalMotivation = 0;
 
-// user's choices will start off as an empty array
-moodFm.userChoices = [];
-
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
     {
@@ -47,11 +44,13 @@ moodFm.questionInfo = [
     },
 ];
 
+const userChoices = []
+
 moodFm.countUserChoices = () => {
     console.log(userChoices);
     for (let i = 0; i < userChoices.length; i++) {
         if (userChoices[i] === moodFm.questionInfo[i].option[0]) {
-            moodFm.totalAngry;
+            moodFm.totalAngry++;
         } else if (userChoices[i] === moodFm.questionInfo[i].option[1]) {
             moodFm.totalSad++;
         } else if (userChoices[i] === moodFm.questionInfo[i].option[2]) {
