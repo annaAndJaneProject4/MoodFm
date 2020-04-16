@@ -24,6 +24,9 @@ moodFm.totalSad = 0;
 moodFm.totalHappy = 0;
 moodFm.totalMotivation = 0;
 
+// user's choices will start off as an empty array
+moodFm.userChoices = []
+
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
     {
@@ -44,18 +47,16 @@ moodFm.questionInfo = [
     },
 ];
 
-const userChoices = []
-
 moodFm.countUserChoices = () => {
-    console.log(userChoices);
-    for (let i = 0; i < userChoices.length; i++) {
-        if (userChoices[i] === moodFm.questionInfo[i].option[0]) {
+    console.log(moodFm.userChoices);
+    for (let i = 0; i < moodFm.userChoices.length; i++) {
+        if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
             moodFm.totalAngry++;
-        } else if (userChoices[i] === moodFm.questionInfo[i].option[1]) {
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[1]) {
             moodFm.totalSad++;
-        } else if (userChoices[i] === moodFm.questionInfo[i].option[2]) {
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[2]) {
             moodFm.totalHappy++;
-        } else if (userChoices[i] === moodFm.questionInfo[i].option[3]) {
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[3]) {
             moodFm.totalMotivation++;
         }
     }
@@ -73,7 +74,7 @@ moodFm.setupClickHandler = () => {
         $(`${moodFm.questionInfo[i].question} a`).on('click', function (e) {
             e.preventDefault();
             const optionChosen = $(this).attr("data-value");
-            userChoices[i] = optionChosen;
+            moodFm.userChoices[i] = optionChosen;
             if (i < moodFm.questionInfo.length - 1) {
                 moodFm.scrollToSection(`${moodFm.questionInfo[i + 1].question}`);
             } else {
