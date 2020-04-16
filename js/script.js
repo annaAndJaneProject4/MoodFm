@@ -47,8 +47,9 @@ moodFm.questionInfo = [
     },
 ];
 
+// loops and checks if each array item in moodFm.userChoices is strictly equal to every value of each options key in moodFm.questionInfo 
+// when the condition is true and a match is found, the variables moodFm.totalAngry, moodFm.totalSad, etc. will update and be incremented by 1
 moodFm.countUserChoices = () => {
-    console.log(moodFm.userChoices);
     for (let i = 0; i < moodFm.userChoices.length; i++) {
         if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
             moodFm.totalAngry++;
@@ -128,8 +129,6 @@ moodFm.init = () => {
     moodFm.getMusicResults("excited");
     moodFm.setupClickOnLastQuestion();
     moodFm.setupClickHandler();
-
-    //DO NOT CONSOLE.LOG HERE
 };
 
 // ------ DOCUMENT READY ------ //
