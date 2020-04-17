@@ -19,11 +19,6 @@ moodFm.results = {
 // initial starting value before any clicks are made by the user
 moodFm.userScore = 0;
 
-moodFm.totalAngry = 0;
-moodFm.totalSad = 0;
-moodFm.totalHappy = 0;
-moodFm.totalMotivation = 0;
-
 // user's choices will start off as an empty array
 moodFm.userChoices = []
 
@@ -48,17 +43,17 @@ moodFm.questionInfo = [
 ];
 
 // loops and checks if each array item in moodFm.userChoices is strictly equal to every value of each options key in moodFm.questionInfo 
-// when the condition is true and a match is found, the variables moodFm.totalAngry, moodFm.totalSad, etc. will update and be incremented by 1
+// when the condition is true and a match is found, calculate user score accordingly
 moodFm.countUserChoices = () => {
     for (let i = 0; i < moodFm.userChoices.length; i++) {
         if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
-            moodFm.totalAngry++;
+            moodFm.userScore += 0
         } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[1]) {
-            moodFm.totalSad++;
+            moodFm.userScore += 1
         } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[2]) {
-            moodFm.totalHappy++;
+            moodFm.userScore += 2
         } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[3]) {
-            moodFm.totalMotivation++;
+            moodFm.userScore += 3
         }
     }
 };
@@ -67,6 +62,7 @@ moodFm.setupClickOnLastQuestion = () => {
     $('button').on('click', function (e) {
         e.preventDefault();
         moodFm.countUserChoices();
+        moodFm.displayUserResult();
     })
 }
 
@@ -86,24 +82,10 @@ moodFm.setupClickHandler = () => {
 };
 
 moodFm.displayUserResult = () => {
-    const totalUserScore = moodFm.calcUserScore();
     const finalResult = `<h2>Your Score is ${totalUserScore}</h2>`;
     $(".quizResult").html(finalResult);
 };
 
-// ------ SMOOTH SCROLL FUNCTION ------ //
-// moodFm.scroll = (scrollTo) => {
-//     $('html, body').stop().animate({
-//         scrollTop: $(scrollTo).offset().top
-//     }, 800);
-// };
-
-// moodFm.scrollToSection = (sectionName) => {
-//     $(".headerStart, .startIcon, li").on("click", (e) => {
-//         e.preventDefault();
-//         moodFm.scroll(sectionName);
-//     });
-// };
 moodFm.startGame = () =>{
     $('.headerStart, .startIcon').on('click',(e)=>{
         console.log('start')
