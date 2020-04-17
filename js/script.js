@@ -77,9 +77,9 @@ moodFm.setupClickHandler = () => {
             const optionChosen = $(this).attr("data-value");
             moodFm.userChoices[i] = optionChosen;
             if (i < moodFm.questionInfo.length - 1) {
-                moodFm.scrollToSection(`${moodFm.questionInfo[i + 1].question}`);
+                moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`);
             } else {
-                moodFm.scrollToSection("#result");
+                moodFm.smoothScroll("#result");
             }
         })
     })
@@ -92,19 +92,35 @@ moodFm.displayUserResult = () => {
 };
 
 // ------ SMOOTH SCROLL FUNCTION ------ //
-moodFm.scroll = (scrollTo) => {
-    $('html, body').stop().animate({
-        scrollTop: $(scrollTo).offset().top
-    }, 800);
-};
+// moodFm.scroll = (scrollTo) => {
+//     $('html, body').stop().animate({
+//         scrollTop: $(scrollTo).offset().top
+//     }, 800);
+// };
 
-moodFm.scrollToSection = (sectionName) => {
-    $(".headerStart, .startIcon, li").on("click", (e) => {
+// moodFm.scrollToSection = (sectionName) => {
+//     $(".headerStart, .startIcon, li").on("click", (e) => {
+//         e.preventDefault();
+//         moodFm.scroll(sectionName);
+//     });
+// };
+moodFm.startGame = () =>{
+    $('.headerStart, .startIcon').on('click',(e)=>{
+        console.log('start')
+        $('html').animate({
+            scrollTop:$('#questionOne').offset().top
+        },800);
+    })
+}
+moodFm.smoothScroll = (scrollTo) =>{
+    $('li').on('click',(e)=>{
         e.preventDefault();
-        moodFm.scroll(sectionName);
-    });
-};
-
+        console.log('section clicked')
+        $('html').stop().animate({
+            scrollTop:$(scrollTo).offset().top
+        },800);
+    })
+}
 // ------ AJAX CALL ------ //
 moodFm.getMusicResults = (query) => {
     $.ajax({
@@ -125,7 +141,9 @@ moodFm.getMusicResults = (query) => {
 
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
-    moodFm.scrollToSection("#questionOne");
+    // moodFm.scrollToSection("#questionOne");
+    moodFm.startGame();
+    moodFm.smoothScroll('#questionTwo');
     moodFm.getMusicResults("excited");
     moodFm.setupClickOnLastQuestion();
     moodFm.setupClickHandler();
@@ -134,4 +152,5 @@ moodFm.init = () => {
 // ------ DOCUMENT READY ------ //
 $(() => {
     moodFm.init();
+    $(window).scrollTop(0);
 });
