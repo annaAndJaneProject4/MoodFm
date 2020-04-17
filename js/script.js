@@ -76,8 +76,10 @@ moodFm.getUserChoiceAndGoToNext = () => {
 
 //function that checks whether moodFm.userChoice has any array items that are undefined or not equal in length to 4
 moodFm.checkForAllArrayItems = function () {
-    if (moodFm.userChoices[1] === undefined || moodFm.userChoices[2] === undefined || moodFm.userChoices.length !== 4) {
-        return false;
+    for (let i = 0; i < moodFm.userChoices.length; i++) {
+        if (moodFm.userChoices[i] === undefined || moodFm.userChoices.length !== 4) {
+            return false;
+        }
     }
     return true;
 };
