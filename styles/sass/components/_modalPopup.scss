@@ -1,0 +1,21 @@
+//Overriding the default styles for SweetAlert2
+//Class names are pre-named by SweetAlert2 and cannot be changed
+
+.swal2-html-container {
+  font-size: 1rem;
+}
+.swal2-popup {
+  padding: 2rem !important;
+//   height: 25rem !important;
+  width: 22rem !important;
+}
+
+// .swal2-icon {
+//   font-size: 0.6rem;
+// }
+
+//overrides SweetAlert2's button background color and padding
+.swal2-styled {
+  background-color: #7cd1f9 !important;
+  padding: 0.7rem 3rem !important;
+}
