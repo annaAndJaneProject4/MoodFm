@@ -42,31 +42,24 @@ moodFm.questionInfo = [
     },
 ];
 
-// loops and checks if each array item in moodFm.userChoices is strictly equal to every value of each options key in moodFm.questionInfo 
-// when the condition is true and a match is found, calculate user score accordingly
-moodFm.countUserChoices = () => {
-    for (let i = 0; i < moodFm.userChoices.length; i++) {
-        if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
-            moodFm.userScore += 0
-        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[1]) {
-            moodFm.userScore += 1
-        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[2]) {
-            moodFm.userScore += 2
-        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[3]) {
-            moodFm.userScore += 3
-        }
-    }
-};
-
-moodFm.setupClickOnLastQuestion = () => {
-    $('button').on('click', function (e) {
+moodFm.startQuiz = () => {
+    $('.headerStart, .startIcon').on('click', (e) => {
+        console.log('start')
+        $('html').animate({
+            scrollTop: $('#questionOne').offset().top
+        }, 800);
+    })
+}
+moodFm.smoothScroll = (scrollTo) => {
+    $('li').on('click', (e) => {
         e.preventDefault();
-        moodFm.countUserChoices();
-        moodFm.displayUserResult();
+        $('html').stop().animate({
+            scrollTop: $(scrollTo).offset().top
+        }, 800);
     })
 }
 
-moodFm.setupClickHandler = () => {
+moodFm.getUserChoiceAndGoToNext = () => {
     $(moodFm.questionInfo).each(function (i) {
         $(`${moodFm.questionInfo[i].question} a`).on('click', function (e) {
             e.preventDefault();
@@ -81,28 +74,70 @@ moodFm.setupClickHandler = () => {
     })
 };
 
-moodFm.displayUserResult = () => {
-    const finalResult = `<h2>Your Score is ${moodFm.userScore}</h2>`;
-    $(".quizResult").html(finalResult);
+//function that checks whether moodFm.userChoice has any array items that are undefined or not equal in length to 4
+moodFm.checkForAllArrayItems = function () {
+    if (moodFm.userChoices[1] === undefined || moodFm.userChoices[2] === undefined || moodFm.userChoices.length !== 4) {
+        return false;
+    }
+    return true;
 };
 
-moodFm.startGame = () =>{
-    $('.headerStart, .startIcon').on('click',(e)=>{
-        console.log('start')
-        $('html').animate({
-            scrollTop:$('#questionOne').offset().top
-        },800);
-    })
+// loops and checks if each array item in moodFm.userChoices is strictly equal to every value of each options key in moodFm.questionInfo 
+// when the condition is true and a match is found, increment user score accordingly
+moodFm.calcUserScore = () => {
+    for (let i = 0; i < moodFm.userChoices.length; i++) {
+        if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[0]) {
+            moodFm.userScore;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[1]) {
+            moodFm.userScore += 1;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[2]) {
+            moodFm.userScore += 2;
+        } else if (moodFm.userChoices[i] === moodFm.questionInfo[i].option[3]) {
+            moodFm.userScore += 3;
+        }
+    }
+};
+
+moodFm.calcUserMood = function () {
+    if (moodFm.userScore <= 3) {
+        return `Uh-oh, someone's in a bad mood today! Your score is ${moodFm.userScore}`;
+    } else if (moodFm.userScore >= 4 && moodFm.userScore <= 6) {
+        return `Why the long face? Your score is ${moodFm.userScore}`;
+    } else if (moodFm.userScore >= 7 && moodFm.userScore <= 9) {
+        return `Someone's cheerful today! Your score is ${moodFm.userScore}`;
+    } else if (moodFm.userScore >= 10 && moodFm.userScore <= 12) {
+        return `Nothing's gonna stop you today! You're ready to conquer the word! Your score is ${moodFm.userScore}`;
+    }
 }
-moodFm.smoothScroll = (scrollTo) =>{
-    $('li').on('click',(e)=>{
+
+moodFm.displayUserResult = () => {
+    const moodResult = moodFm.calcUserMood();
+    $(".quizResult").html(`<h2>${moodResult}</h2>`);
+};
+
+moodFm.isQuizComplete = function () {
+    const isComplete = moodFm.checkForAllArrayItems();
+    if (isComplete === true) {
+        moodFm.calcUserScore();
+        moodFm.displayUserResult();
+        //resets score to 0 when the quiz is over
+        moodFm.userScore = 0;
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: 'Error!',
+            text: 'Please go back and complete the quiz before you submit!',
+        });
+    }
+}
+
+moodFm.submitUserChoices = () => {
+    $('button').on('click', function (e) {
         e.preventDefault();
-        console.log('section clicked')
-        $('html').stop().animate({
-            scrollTop:$(scrollTo).offset().top
-        },800);
+        moodFm.isQuizComplete();
     })
 }
+
 // ------ AJAX CALL ------ //
 moodFm.getMusicResults = (query) => {
     $.ajax({
@@ -124,11 +159,11 @@ moodFm.getMusicResults = (query) => {
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
     // moodFm.scrollToSection("#questionOne");
-    moodFm.startGame();
+    moodFm.startQuiz();
     moodFm.smoothScroll('#questionTwo');
     moodFm.getMusicResults("excited");
-    moodFm.setupClickOnLastQuestion();
-    moodFm.setupClickHandler();
+    moodFm.getUserChoiceAndGoToNext();
+    moodFm.submitUserChoices();
 };
 
 // ------ DOCUMENT READY ------ //

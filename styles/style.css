@@ -297,12 +297,6 @@ a {
   color: #333333;
 }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1280px;
-  width: 85%;
-}
-
 button {
   background-color: #4d89f0;
   color: #ffecda;
@@ -311,6 +305,26 @@ button {
   padding: 0.7rem 3.3rem;
   border: none;
   margin-top: 2rem;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 85%;
+}
+
+.swal2-html-container {
+  font-size: 1rem;
+}
+
+.swal2-popup {
+  padding: 2rem !important;
+  width: 22rem !important;
+}
+
+.swal2-styled {
+  background-color: #7cd1f9 !important;
+  padding: 0.7rem 3rem !important;
 }
 
 header {
