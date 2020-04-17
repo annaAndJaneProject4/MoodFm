@@ -117,7 +117,7 @@ moodFm.displayUserResult = () => {
 
 moodFm.isQuizComplete = function () {
     const isComplete = moodFm.checkForAllArrayItems();
-    if (isComplete === true) {
+    if (isComplete) {
         moodFm.calcUserScore();
         moodFm.displayUserResult();
         //resets score to 0 when the quiz is over
@@ -158,7 +158,6 @@ moodFm.getMusicResults = (query) => {
 
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
-    // moodFm.scrollToSection("#questionOne");
     moodFm.startQuiz();
     moodFm.smoothScroll('#questionTwo');
     moodFm.getMusicResults("excited");
