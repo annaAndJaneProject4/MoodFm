@@ -82,7 +82,7 @@ moodFm.setupClickHandler = () => {
 };
 
 moodFm.displayUserResult = () => {
-    const finalResult = `<h2>Your Score is ${totalUserScore}</h2>`;
+    const finalResult = `<h2>Your Score is ${moodFm.userScore}</h2>`;
     $(".quizResult").html(finalResult);
 };
 
