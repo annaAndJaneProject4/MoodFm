@@ -128,12 +128,17 @@ moodFm.calcUserMood = function () {
         // return `Nothing's gonna stop you today! You're ready to conquer the word! Your score is ${moodFm.userScore}`;
     }
 }
+//create a randomizer method
+moodFm.randomize = function (array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
 
 //from there, create a function (using math.random()) that will randomly select ONE of the items from the array
 moodFm.randomSongKeyWord = () => {
     moodFm.calcUserMood();
-    moodFm.songKeyWordIndex = Math.floor(Math.random() * (moodFm.userMood.length));
-    moodFm.songKeyWord = moodFm.userMood [moodFm.songKeyWordIndex];
+    moodFm.songKeyWord = moodFm.randomize(moodFm.userMood);
+    // moodFm.songKeyWordIndex = Math.floor(Math.random() * (moodFm.userMood.length));
+    // moodFm.songKeyWord = moodFm.userMood [moodFm.songKeyWordIndex];
     console.log(moodFm.songKeyWord);
     // console.log(moodFm.songKeyWordIndex);
 }
@@ -186,10 +191,6 @@ moodFm.getMusicResults = (query) => {
     });
 };
 
-//create a randomizer method
-moodFm.randomize = function(array) {
-    return array[Math.floor(Math.random() * array.length)];
-}
 
 moodFm.getRandomSongInfo = function(resultsObject) {
     moodFm.resultsArray = resultsObject.results;
@@ -249,7 +250,6 @@ moodFm.init = () => {
     moodFm.getMusicResults("confident");
     moodFm.getUserChoiceAndGoToNext();
     moodFm.submitUserChoices();
-    moodFm.randomSongKeyWord();
 };
 
 // ------ DOCUMENT READY ------ //
