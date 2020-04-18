@@ -22,6 +22,11 @@ moodFm.userScore = 0;
 // user's choices will start off as an empty array
 moodFm.userChoices = []
 
+// User's mood result base on their score
+moodFm.userMood
+// Random key word selected from the mood array inside moodFm.results object
+moodFm.songKeyWordIndex
+moodFm.songKeyWord
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
     {
@@ -99,17 +104,38 @@ moodFm.calcUserScore = () => {
         }
     }
 };
-
+//after user score is calculated, reference back to moodFm.results object and match the user score with a mood array
 moodFm.calcUserMood = function () {
     if (moodFm.userScore <= 3) {
-        return `Uh-oh, someone's in a bad mood today! Your score is ${moodFm.userScore}`;
+        moodFm.userMood = moodFm.results.moodAngry
+        return moodFm.userMood
+        // console.log(moodFm.userMood)
+        // return `Uh-oh, someone's in a bad mood today! Your score is ${moodFm.userScore}`;
     } else if (moodFm.userScore >= 4 && moodFm.userScore <= 6) {
-        return `Why the long face? Your score is ${moodFm.userScore}`;
+        moodFm.userMood = moodFm.results.moodSad
+        return moodFm.userMood
+        // console.log(moodFm.userMood)
+        // return `Why the long face? Your score is ${moodFm.userScore}`;
     } else if (moodFm.userScore >= 7 && moodFm.userScore <= 9) {
-        return `Someone's cheerful today! Your score is ${moodFm.userScore}`;
+        moodFm.userMood = moodFm.results.moodHappy
+        return moodFm.userMood
+        // console.log(moodFm.userMood)
+        // return `Someone's cheerful today! Your score is ${moodFm.userScore}`;
     } else if (moodFm.userScore >= 10 && moodFm.userScore <= 12) {
-        return `Nothing's gonna stop you today! You're ready to conquer the word! Your score is ${moodFm.userScore}`;
+        moodFm.userMood = moodFm.results.moodMotivation
+        return moodFm.userMood
+        // console.log(moodFm.userMood)
+        // return `Nothing's gonna stop you today! You're ready to conquer the word! Your score is ${moodFm.userScore}`;
     }
+}
+
+//from there, create a function (using math.random()) that will randomly select ONE of the items from the array
+moodFm.randomSongKeyWord = () => {
+    moodFm.calcUserMood();
+    moodFm.songKeyWordIndex = Math.floor(Math.random() * (moodFm.userMood.length))
+    moodFm.songKeyWord = moodFm.userMood [moodFm.songKeyWordIndex]
+    console.log(moodFm.songKeyWord)
+    console.log(moodFm.songKeyWordIndex)
 }
 
 moodFm.displayUserResult = () => {
@@ -158,8 +184,7 @@ moodFm.getMusicResults = (query) => {
     });
 };
 
-//after user gets their score, reference back to moodFm.results object and match the user score with a mood array
-//from there, create a function (using math.random()) that will randomly select ONE of the items from the array
+
 //once a keyword from the array is selected, pass the keyword into the moodFm.getMusicResults parameter and once the ajax
     //call is made, 
 
@@ -180,6 +205,7 @@ moodFm.init = () => {
     moodFm.getMusicResults("happy");
     moodFm.getUserChoiceAndGoToNext();
     moodFm.submitUserChoices();
+    moodFm.randomSongKeyWord();
 };
 
 // ------ DOCUMENT READY ------ //
