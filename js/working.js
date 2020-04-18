@@ -161,17 +161,17 @@ moodFm.getMusicResults = (query) => {
 //after user gets their score, reference back to moodFm.results object and match the user score with a mood array
 //from there, create a function (using math.random()) that will randomly select ONE of the items from the array
 //once a keyword from the array is selected, pass the keyword into the moodFm.getMusicResults parameter and once the ajax
-//call is made, 
+    //call is made, 
 
 //properties we need from the results object
-//results.artistName  ->name of artist
-//results.trackName   ->name of song
-//results.previewURL  ->audio file
+    //results.artistName  ->name of artist
+    //results.trackName   ->name of song
+    //results.previewURL  ->audio file
 
-//results.artistViewUrl ->official itunes artist page
-//results.trackViewUrl ->official itunes song page
+    //results.artistViewUrl ->official itunes artist page
+    //results.trackViewUrl ->official itunes song page
 
-//results.artworkUrl100 ->album cover
+    //results.artworkUrl100 ->album cover
 
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {

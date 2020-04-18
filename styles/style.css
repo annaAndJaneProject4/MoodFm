@@ -285,7 +285,6 @@ h3 {
   font-size: 2rem;
   font-style: italic;
   font-weight: 400;
-  margin-right: 4rem;
   position: relative;
 }
 
@@ -529,6 +528,7 @@ header h2.border span {
 
 header h3 {
   margin-top: 10rem;
+  margin-right: 4rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -658,5 +658,6 @@ main .sectionFive h4 span::before {
 }
 
 main .sectionFive .displayResults {
-  width: 55rem;
+  width: 50rem;
+  margin: 0 auto;
 }
