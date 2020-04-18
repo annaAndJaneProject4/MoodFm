@@ -182,43 +182,21 @@ moodFm.getMusicResults = (query) => {
         },
     }).then((results) => {
         // console.log(results);
-        moodFm.getSongDetails(results);
-
-     // moodFm.resultsArray = resultsObject.results;
-    // console.log(moodFm.resultsArray);
+        moodFm.getRandomSongInfo(results);
     });
 };
 
-// //create a randomizer method
-// moodFm.randomize = function(array) {
-//     //method 1
-//     return array[Math.floor(Math.random() * array.length)];
+//create a randomizer method
+moodFm.randomize = function(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
 
-//     //or method 2
-//     // let randomNumber = Math.floor(Math.random() * array.length);
-//     // return array[randomNumber];
-// }
+moodFm.getRandomSongInfo = function(resultsObject) {
+    moodFm.resultsArray = resultsObject.results;
+    // console.log(moodFm.resultsArray);
 
-
-
-moodFm.getSongDetails = function(resultsObject) {
-    moodFm.resultsArray = resultsObject.results
-    console.log(moodFm.resultsArray);
-
-    moodFm.artistName = moodFm.resultsArray[1].artistName;
-    console.log(moodFm.artistName);
-
-    moodFm.songTitle = moodFm.resultsArray[1].trackName;
-    console.log(moodFm.songTitle);
-
-    moodFm.audio = moodFm.resultsArray[1].previewUrl;
-    console.log(moodFm.audio);
-
-    moodFm.artistItunesUrl = moodFm.resultsArray[1].artistViewUrl;
-    console.log(moodFm.artistItunesUrl);
-
-    moodFm.songItunesUrl = moodFm.resultsArray[1].trackViewUrl;
-    console.log(moodFm.songItunesUrl);
+    moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
+    // console.log(moodFm.randomSong);
 }
 
 moodFm.displaySong = function() {
@@ -226,10 +204,10 @@ moodFm.displaySong = function() {
                             <h3>We think this song matches your current mood:<h3>
                             <br><img src="./assets/displayResults.svg" class="displayResults" alt="">
                             <div class="songDetails">
-                                <h2 class="songTitle">${moodFm.songTitle}</h3>
-                                <p class="artistName">${moodFm.artistName}</p>
+                                <h2 class="songTitle">${moodFm.randomSong.trackName}</h3>
+                                <p class="artistName">${moodFm.randomSong.artistName}</p>
                                 <button class="btn btnSmall">Click to Listen</button>
-                                <audio src="${moodFm.audio}" preload="auto" type="audio/mpeg"></audio>
+                                <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
                             </div>
                         </div>
                         `;
@@ -268,7 +246,7 @@ moodFm.playOrPauseSong = function() {
 moodFm.init = () => {
     moodFm.startQuiz();
     moodFm.smoothScroll('#questionTwo');
-    moodFm.getMusicResults("sad");
+    moodFm.getMusicResults("confident");
     moodFm.getUserChoiceAndGoToNext();
     moodFm.submitUserChoices();
     moodFm.randomSongKeyWord();
