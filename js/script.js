@@ -271,6 +271,7 @@ moodFm.init = () => {
     moodFm.getMusicResults("sad");
     moodFm.getUserChoiceAndGoToNext();
     moodFm.submitUserChoices();
+    moodFm.randomSongKeyWord();
 };
 
 // ------ DOCUMENT READY ------ //
