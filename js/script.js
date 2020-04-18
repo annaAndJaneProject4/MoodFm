@@ -233,20 +233,20 @@ moodFm.displaySong = function() {
                         </div>
                         `;
     $(".quizResult").html(html);
-    moodFm.$audio = $("audio");
-    moodFm.playSong();
+    moodFm.$btnAudio = $(".btnSmall");
+    moodFm.$sampleAudio = $("audio");
+    moodFm.playOrPauseSong();
     
 }
 
-moodFm.playSong = function() {
-    $('button').on('click', function() {
-        console.log('click');
-        if (moodFm.$audio[0].paused) {
-            moodFm.$audio[0].play();
-        } else {
-            moodFm.$audio[0].pause();
-        }
-    })
+moodFm.playOrPauseSong = function() {
+    moodFm.$btnAudio.on("click", function () {
+      if (moodFm.$sampleAudio[0].paused) {
+        moodFm.$sampleAudio[0].play();
+      } else {
+        moodFm.$sampleAudio[0].pause();
+      }
+    });
 }
 
 
