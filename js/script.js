@@ -134,7 +134,7 @@ moodFm.randomSongKeyWord = () => {
     moodFm.calcUserMood();
     moodFm.songKeyWordIndex = Math.floor(Math.random() * (moodFm.userMood.length));
     moodFm.songKeyWord = moodFm.userMood [moodFm.songKeyWordIndex];
-    // console.log(moodFm.songKeyWord);
+    console.log(moodFm.songKeyWord);
     // console.log(moodFm.songKeyWordIndex);
 }
 
@@ -147,6 +147,7 @@ moodFm.isQuizComplete = function () {
     const isComplete = moodFm.checkForAllArrayItems();
     if (isComplete) {
         moodFm.calcUserScore();
+        moodFm.randomSongKeyWord();
         moodFm.displayUserResult();
         moodFm.displaySong();
         //resets score to 0 when the quiz is over
@@ -267,10 +268,9 @@ moodFm.playOrPauseSong = function() {
 moodFm.init = () => {
     moodFm.startQuiz();
     moodFm.smoothScroll('#questionTwo');
-    moodFm.getMusicResults("happy");
+    moodFm.getMusicResults("sad");
     moodFm.getUserChoiceAndGoToNext();
     moodFm.submitUserChoices();
-    moodFm.randomSongKeyWord();
 };
 
 // ------ DOCUMENT READY ------ //
