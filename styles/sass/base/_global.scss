@@ -22,12 +22,22 @@ h3 {
     font-size: 2rem;
     font-style: italic;
     font-weight: 400;
-    margin-right: 5rem;
+    position: relative;
+
+    & span::before {
+        @include questionHeaderUnderline;
+        height: 20px;
+        left: 0;
+        right: 110%;
+        bottom: 4px;
+        width: 105%;
+        background: #EADBCC;
+    }
 }
 
 h4 {
     font-size: 3.5rem;
-    padding: 2rem 0;
+    padding-bottom: 2rem;
     position: relative;
     font-weight: 600;
     font-style: italic;
@@ -40,12 +50,30 @@ a {
     color: $colorDark;
 }
 
-button {
-    background-color: #4d89f0;
-    color: #ffecda;
-    border-radius: 5rem;
-    font-size: 2rem;
-    padding: 0.7rem 3.3rem;
+.btn {
     border: none;
-    margin-top: 2rem;
+    color: $colorDark;
+    border-radius: 5rem;
+    font-size: 1.5rem;
+    margin: 10px 10px 10px 0;
+    // padding: 1.8rem 4.3rem;
+    color: $colorWhite;
+    text-shadow: 2px 2px 0 #a5a5a5;
+    background: #5DC8CD;
+    box-shadow: 0px 5px 0px 0px #1E8185;
+    transition: all 0.2s;
+
+    &:hover {
+        box-shadow: 0px 0px 0px 0px #1E8185;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    &Large {
+        padding: 1.8rem 4.3rem;
+    }
+
+    &Small {
+        padding: 1rem 2.5rem;
+    }
 }

@@ -3,7 +3,6 @@ header {
     background-color: $colorBeige;
     display: flex;
     align-items: flex-end;
-    padding-bottom: 1rem;
 
     .headerContainer {
         display: flex;
@@ -40,7 +39,7 @@ header {
     .headerTitleBox {
         outline: 4px double $colorBlue;
         outline-offset: -15px;
-        padding: 4rem;
+        padding: 3.5rem 5rem;
         background-color: rgba(246, 246, 246, 0.6);
     }
 
@@ -59,11 +58,11 @@ header {
     }
 
     h2.border:before {
-		margin: 20.5px 0 0 -110px;
+		margin: 18px 0 0 -110px;
 	}
 
 	h2.border:after {
-		margin: 20.5px 0 0 10px;
+		margin: 18px 0 0 10px;
 	}
 
 	h2.border span {
@@ -73,6 +72,7 @@ header {
 
     h3 {
         margin-top: 10rem;
+        margin-right: 4rem;
         align-self: flex-end;
     }
 
@@ -83,5 +83,9 @@ header {
     i {
         font-size: 4rem;
         color: $colorBlueLight;
+    }
+
+    .musicNotesIcon {
+        width: 2.5rem;
     }
 }

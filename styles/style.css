@@ -241,23 +241,23 @@ textarea {
 
 @-webkit-keyframes slideInDown {
   0% {
-    -webkit-transform: translate3d(0, -60%, 0);
-    transform: translate3d(0, -60%, 0);
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, -20%, 0);
+    transform: translate3d(0, -20%, 0);
   }
 }
 
 @keyframes slideInDown {
   0% {
-    -webkit-transform: translate3d(0, -60%, 0);
-    transform: translate3d(0, -60%, 0);
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, -20%, 0);
+    transform: translate3d(0, -20%, 0);
   }
 }
 
@@ -285,12 +285,30 @@ h3 {
   font-size: 2rem;
   font-style: italic;
   font-weight: 400;
-  margin-right: 5rem;
+  position: relative;
+}
+
+h3 span::before {
+  content: '';
+  height: 25px;
+  position: absolute;
+  bottom: 25px;
+  left: 24%;
+  right: 25%;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  margin: 0 auto;
+  height: 20px;
+  left: 0;
+  right: 110%;
+  bottom: 4px;
+  width: 105%;
+  background: #EADBCC;
 }
 
 h4 {
   font-size: 3.5rem;
-  padding: 2rem 0;
+  padding-bottom: 2rem;
   position: relative;
   font-weight: 600;
   font-style: italic;
@@ -301,14 +319,34 @@ a {
   color: #333333;
 }
 
-button {
-  background-color: #4d89f0;
-  color: #ffecda;
-  border-radius: 5rem;
-  font-size: 2rem;
-  padding: 0.7rem 3.3rem;
+.btn {
   border: none;
-  margin-top: 2rem;
+  color: #333333;
+  border-radius: 5rem;
+  font-size: 1.5rem;
+  margin: 10px 10px 10px 0;
+  color: #F6F6F6;
+  text-shadow: 2px 2px 0 #a5a5a5;
+  background: #5DC8CD;
+  -webkit-box-shadow: 0px 5px 0px 0px #1E8185;
+          box-shadow: 0px 5px 0px 0px #1E8185;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  -webkit-box-shadow: 0px 0px 0px 0px #1E8185;
+          box-shadow: 0px 0px 0px 0px #1E8185;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.btnLarge {
+  padding: 1.8rem 4.3rem;
+}
+
+.btnSmall {
+  padding: 1rem 2.5rem;
 }
 
 .wrapper {
@@ -335,6 +373,10 @@ button {
 
 .grey {
   background-color: #b6b6b6;
+}
+
+.selected {
+  opacity: 0.2;
 }
 
 .swal2-html-container {
@@ -377,11 +419,16 @@ button {
   outline-offset: -15px;
   padding: 2rem;
   background-color: rgba(246, 246, 246, 0.6);
+  cursor: pointer;
+}
+
+.questionContainer li:hover {
+  opacity: 0.6;
 }
 
 .questionContainer li a {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -389,9 +436,6 @@ button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   font-size: 2rem;
 }
 
@@ -404,7 +448,6 @@ header {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  padding-bottom: 1rem;
 }
 
 header .headerContainer {
@@ -459,7 +502,7 @@ header .headerTitle {
 header .headerTitleBox {
   outline: 4px double #9ae1e5;
   outline-offset: -15px;
-  padding: 4rem;
+  padding: 3.5rem 5rem;
   background-color: rgba(246, 246, 246, 0.6);
 }
 
@@ -478,11 +521,11 @@ header h2.border::before, header h2.border::after {
 }
 
 header h2.border:before {
-  margin: 20.5px 0 0 -110px;
+  margin: 18px 0 0 -110px;
 }
 
 header h2.border:after {
-  margin: 20.5px 0 0 10px;
+  margin: 18px 0 0 10px;
 }
 
 header h2.border span {
@@ -492,6 +535,7 @@ header h2.border span {
 
 header h3 {
   margin-top: 10rem;
+  margin-right: 4rem;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
@@ -505,8 +549,26 @@ header i {
   color: #9ae1e5bb;
 }
 
+header .musicNotesIcon {
+  width: 2.5rem;
+}
+
 main {
   text-align: center;
+}
+
+main section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section img {
+  width: 100%;
+  margin: auto;
 }
 
 main .sectionOne, main .sectionThree, main .sectionFive {
@@ -555,10 +617,6 @@ main .sectionTwo li, main .sectionFour li {
   outline: 4px double #f3dec8;
 }
 
-main .sectionTwo img, main .sectionFour img {
-  width: 13rem;
-}
-
 main .sectionTwo h4 span::before {
   content: '';
   height: 25px;
@@ -587,6 +645,10 @@ main .sectionFour h4 span::before {
   background: #f3dec8;
 }
 
+main .sectionFive h4 {
+  font-size: 5rem;
+}
+
 main .sectionFive h4 span::before {
   content: '';
   height: 25px;
@@ -597,6 +659,16 @@ main .sectionFive h4 span::before {
   z-index: 0;
   mix-blend-mode: multiply;
   margin: 0 auto;
-  width: 16%;
+  height: 28px;
+  width: 22%;
   background: #92D2DE;
+}
+
+main .sectionFive .displayResults {
+  width: 50rem;
+  margin: 0 auto;
+}
+
+.quizResult .songDetails {
+  display: inline-block;
 }
