@@ -1,6 +1,16 @@
 main {
    text-align: center;
-   
+
+    section {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+            margin: auto;
+        }
+    } 
+    
     .sectionOne, .sectionThree, .sectionFive {
         background-color: $colorBlueLight;
         height: 100vh;
@@ -33,10 +43,6 @@ main {
         li {
             outline: 4px double #f3dec8;
         }
-
-        img {
-            width: 13rem;
-        }
     }
 
     .sectionTwo {
@@ -56,10 +62,19 @@ main {
     }
 
     .sectionFive {
+        h4 {
+            font-size: 5rem;
+        }
+
         h4 span::before {
             @include questionHeaderUnderline;
-            width: 16%;
+            height: 28px;
+            width: 22%;
             background: #92D2DE;
+        }
+
+        .displayResults {
+            width: 55rem;
         }
     }
 }
