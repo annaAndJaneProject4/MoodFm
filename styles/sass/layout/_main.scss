@@ -1,57 +1,65 @@
 main {
    text-align: center;
-}
+   
+    .sectionOne, .sectionThree, .sectionFive {
+        background-color: $colorBlueLight;
+        height: 100vh;
 
-.sectionOne {
-    background-color: $colorBlueLight;
-    height: 100vh;
-}
-
-.sectionTwo {
-    background-color: $colorBeige;
-    height: 100vh;
-
-    ul {
-        display: flex;
-        justify-content: center;
+        li {
+            outline: 4px double $colorBlue;
+        }
     }
 
-    img {
-        width: 13rem;
+    .sectionOne {
+        h4 span::before {
+            @include questionHeaderUnderline;
+            width: 28%;
+            background: #92D2DE;
+        }
     }
-}
 
-.sectionThree {
-    background-color: $colorBlueLight;
-    height: 100vh;
-}
+    .sectionThree {
+        h4 span::before {
+            @include questionHeaderUnderline;
+            width: 37%;
+            background: #92D2DE;
+        }
+    }
 
-.sectionFour {
-    background-color: $colorBeige;
-    height: 100vh;
-}
+    .sectionTwo, .sectionFour  {
+        background-color: $colorBeige;
+        height: 100vh;
 
-.sectionFive {
-    background-color: $colorBlueLight;
-    height: 100vh;
-}
+        li {
+            outline: 4px double #f3dec8;
+        }
 
-// option section general styling
-// question one (color) option styling 
-.circle{
-    width:50%;
-    height:50%;
-    border-radius: 50%;
-}
-.red{
-    background-color:red;
-}
-.yellow{
-    background-color:yellow;
-}
-.orange{
-    background-color:orange;
-}
-.grey{
-    background-color:grey;
+        img {
+            width: 13rem;
+        }
+    }
+
+    .sectionTwo {
+         h4 span::before {
+            @include questionHeaderUnderline;
+            width: 43%;
+            background: #f3dec8;  
+        }
+    }
+
+    .sectionFour {
+        h4 span::before {
+            @include questionHeaderUnderline;
+            width: 23%;
+            background: #f3dec8;  
+        }
+    }
+
+    .sectionFive {
+        h4 span::before {
+            @include questionHeaderUnderline;
+            width: 16%;
+            background: #92D2DE;
+        }
+    }
 }

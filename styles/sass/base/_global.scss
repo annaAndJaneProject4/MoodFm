@@ -26,7 +26,13 @@ h3 {
 }
 
 h4 {
-    font-size: 2rem;
+    font-size: 3.5rem;
+    padding: 2rem 0;
+    position: relative;
+    font-weight: 600;
+    font-style: italic;
+    // -webkit-text-stroke: 1px $colorDark;
+    // color: transparent;
 }
 
 a {
