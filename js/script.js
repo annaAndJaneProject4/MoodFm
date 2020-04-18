@@ -227,12 +227,26 @@ moodFm.displaySong = function() {
                             <div class="songDetails">
                                 <h2 class="songTitle">${moodFm.songTitle}</h3>
                                 <p class="artistName">${moodFm.artistName}</p>
+                                <button class="btn btnSmall">Click to Listen</button>
                                 <audio src="${moodFm.audio}" preload="auto" type="audio/mpeg"></audio>
                             </div>
                         </div>
                         `;
     $(".quizResult").html(html);
+    moodFm.$audio = $("audio");
+    moodFm.playSong();
     
+}
+
+moodFm.playSong = function() {
+    $('button').on('click', function() {
+        console.log('click');
+        if (moodFm.$audio[0].paused) {
+            moodFm.$audio[0].play();
+        } else {
+            moodFm.$audio[0].pause();
+        }
+    })
 }
 
 
