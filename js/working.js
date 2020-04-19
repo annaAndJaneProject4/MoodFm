@@ -10,10 +10,10 @@ const moodFm = {};
 
 // ------ VARIABLES/PROPERTIES THAT LIVE ON THE NAME SPACE OBJECT ------ //
 moodFm.results = {
-  moodSad: ["sad", "miss", "tear", "lonely", "sorry"],
+  moodSad: ["sad", "miss", "cry", "lonely", "sorry"],
   moodHappy: ["happy", "joy", "party", "dance", "excited"],
   moodAngry: ["angry", "hate", "rage", "kill", "death"],
-  moodMotivation: ["strong", "power", "win", "brave", "survive"],
+  moodMotivation: ["strong", "power", "confident", "brave", "survive"],
 };
 
 // initial starting value before any clicks are made by the user
@@ -54,7 +54,7 @@ moodFm.questionInfo = [
 
 moodFm.startQuiz = () => {
   $(".headerStart, .startIcon").on("click", (e) => {
-    console.log("start");
+    // console.log('start')
     $("html").animate(
       {
         scrollTop: $("#questionOne").offset().top,
@@ -159,18 +159,13 @@ moodFm.getRandomSongKeyword = () => {
   // console.log(moodFm.songKeywordIndex);
 };
 
-moodFm.displayUserResult = () => {
-  const moodResult = moodFm.calcUserMood();
-  $(".quizResult").html(`<h2>${moodResult}</h2>`);
-};
-
 moodFm.isQuizComplete = function () {
   const isComplete = moodFm.checkForAllArrayItems();
   if (isComplete) {
     moodFm.calcUserScore();
     moodFm.getRandomSongKeyword();
-    moodFm.displayUserResult();
-    moodFm.displaySong();
+    moodFm.getMusicResults(moodFm.songKeyword);
+    // moodFm.displaySong();
     //resets score to 0 when the quiz is over
     moodFm.userScore = 0;
   } else {
@@ -197,22 +192,24 @@ moodFm.getMusicResults = (query) => {
     dataType: "json",
     data: {
       term: query,
-      limit: 10,
+      limit: 15,
       media: "music",
+      attribute: "songTerm",
       format: "json",
     },
   }).then((results) => {
     // console.log(results);
     moodFm.getRandomSongInfo(results);
+    moodFm.displaySong();
   });
 };
 
 moodFm.getRandomSongInfo = function (resultsObject) {
   moodFm.resultsArray = resultsObject.results;
-  // console.log(moodFm.resultsArray);
+  console.log(moodFm.resultsArray);
 
   moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
-  // console.log(moodFm.randomSong);
+  console.log(moodFm.randomSong);
 };
 
 moodFm.displaySong = function () {
@@ -260,7 +257,7 @@ moodFm.playOrPauseSong = function () {
 moodFm.init = () => {
   moodFm.startQuiz();
   moodFm.smoothScroll("#questionTwo");
-  moodFm.getMusicResults("confident");
+  // moodFm.getMusicResults(moodFm.songKeyword);
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
 };
