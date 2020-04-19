@@ -56,7 +56,6 @@ a {
     border-radius: 5rem;
     font-size: 1.5rem;
     margin: 10px 10px 10px 0;
-    // padding: 1.8rem 4.3rem;
     color: $colorWhite;
     text-shadow: 2px 2px 0 #a5a5a5;
     background: #5DC8CD;
@@ -71,6 +70,7 @@ a {
 
     &Large {
         padding: 1.8rem 4.3rem;
+        text-transform: uppercase;
     }
 
     &Small {

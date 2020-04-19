@@ -41,14 +41,14 @@ moodFm.questionInfo = [
     question: "#questionThree",
     option: [
       "rainingWeather",
-      "cloudyWeather",
+      "thunderWeather",
       "snowingWeather",
       "sunnyWeather",
     ],
   },
   {
     question: "#questionFour",
-    option: ["nothingFood", "comfortFood", "iceCreamFood", "saladFood"],
+    option: ["nothingFood", "comfortFood", "iceCreamFood", "healthyFood"],
   },
 ];
 

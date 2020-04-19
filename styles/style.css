@@ -343,6 +343,7 @@ a {
 
 .btnLarge {
   padding: 1.8rem 4.3rem;
+  text-transform: uppercase;
 }
 
 .btnSmall {
