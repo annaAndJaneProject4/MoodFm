@@ -347,7 +347,21 @@ a {
 }
 
 .btnSmall {
-  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 1px dashed #535461;
+  color: #535461;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
+  padding: 0.5rem 2.5rem;
+}
+
+.btnSmall:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  margin: 0;
 }
 
 .wrapper {
@@ -660,23 +674,72 @@ main .sectionFive h4 span::before {
   z-index: 0;
   mix-blend-mode: multiply;
   margin: 0 auto;
-  height: 28px;
+  height: 30px;
   width: 22%;
+  bottom: 23px;
   background: #92D2DE;
 }
 
-main .sectionFive .displayResults {
-  width: 50rem;
-  margin: 0 auto;
+.quizResultContainer {
+  position: relative;
 }
 
-.quizResult .songDetails {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 20%;
+.quizResultContainer .displaySong {
+  position: relative;
+}
+
+.quizResultContainer .displaySong h4 {
+  font-size: 3.5rem;
+  padding: 0;
+}
+
+.quizResultContainer .displaySong h4 span::before {
+  content: '';
+  height: 25px;
+  position: absolute;
+  bottom: 25px;
+  left: 24%;
+  right: 25%;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  margin: 0 auto;
+  width: 40%;
+  bottom: -8px;
+}
+
+.quizResultContainer .displaySong .displaySongImg {
+  width: 53rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.quizResultContainer .displaySong .playIconImg {
+  width: 1.3rem;
+  position: absolute;
+  top: 413px;
+  right: 618px;
+  cursor: pointer;
+}
+
+.quizResultContainer .displaySong .songDetails {
+  position: absolute;
+  width: 198px;
+  top: 180px;
+  right: 533px;
+}
+
+.quizResultContainer .displaySong .songTitle {
+  font-size: 1.45rem;
+}
+
+.quizResultContainer .displaySong .artistName {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.quizResultContainer .displaySong .btnSmall {
+  position: absolute;
+  width: 178px;
+  top: 350px;
+  right: 542px;
 }

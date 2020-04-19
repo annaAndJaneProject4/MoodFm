@@ -213,19 +213,19 @@ moodFm.getRandomSongInfo = function (resultsObject) {
 };
 
 moodFm.displaySong = function () {
-  const html = `<div>
-                            <h3>We think this song matches your current mood:<h3>
-                            <br><img src="./assets/displayResults.svg" class="displayResults" alt="">
+  const html = `<div class="displaySong">
+                            <h4><span>Your Musical Mood:</span><h4>
+                            <img src="./assets/displayResults.svg" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player" role="button">
                             <div class="songDetails">
-                                <h2 class="songTitle">${moodFm.randomSong.trackName}</h3>
+                                <p class="songTitle">${moodFm.randomSong.trackName}</p>
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
-                                <button class="btn btnSmall">Click to Listen</button>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
                             </div>
+                            <img src="./assets/playIcon.svg" class="playIconImg" alt="play button icon">
                         </div>
                         `;
-  $(".quizResult").html(html);
-  moodFm.$btnAudio = $(".btnSmall");
+  $(".quizResultContainer").html(html);
+  moodFm.$btnAudio = $(".playIconImg");
   moodFm.$sampleAudio = $("audio");
   moodFm.playOrPauseSong();
 };
@@ -267,3 +267,4 @@ $(() => {
   moodFm.init();
   $(window).scrollTop(0);
 });
+

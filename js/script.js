@@ -24,14 +24,9 @@ moodFm.userChoices = [];
 
 // User's mood result base on their score
 moodFm.userMood;
-// Random key word selected from the mood array inside moodFm.results object
-moodFm.songKeywordIndex;
-moodFm.songKeyword;
-// song result html
-moodFm.html
 
-// moodresultsarray
-moodFm.resultsArray
+// Random key word selected from the mood array inside moodFm.results object
+moodFm.songKeyword;
 
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
@@ -45,12 +40,7 @@ moodFm.questionInfo = [
   },
   {
     question: "#questionThree",
-    option: [
-      "rainingWeather",
-      "thunderWeather",
-      "snowingWeather",
-      "sunnyWeather",
-    ],
+    option: ["rainingWeather", "thunderWeather", "snowingWeather", "sunnyWeather"],
   },
   {
     question: "#questionFour",
@@ -60,25 +50,18 @@ moodFm.questionInfo = [
 
 moodFm.startQuiz = () => {
   $(".headerStart, .startIcon").on("click", (e) => {
-    $("html").animate(
-      {
+    $("html").animate({
         scrollTop: $("#questionOne").offset().top,
-      },
-      800
-    );
+      }, 800);
   });
 };
+
 moodFm.smoothScroll = (scrollTo) => {
   $("li").on("click", (e) => {
     e.preventDefault();
-    $("html")
-      .stop()
-      .animate(
-        {
+    $("html").stop().animate({
           scrollTop: $(scrollTo).offset().top,
-        },
-        800
-      );
+        }, 800);
   });
 };
 
@@ -88,6 +71,8 @@ moodFm.getUserChoiceAndGoToNext = () => {
       e.preventDefault();
       const optionChosen = $(this).attr("data-value");
       moodFm.userChoices[i] = optionChosen;
+
+      //check next question or end (edit comment later)
       if (i < moodFm.questionInfo.length - 1) {
         moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`);
       } else {
@@ -100,10 +85,7 @@ moodFm.getUserChoiceAndGoToNext = () => {
 //function that checks whether moodFm.userChoice has any array items that are undefined or not equal in length to 4
 moodFm.checkForAllArrayItems = function () {
   for (let i = 0; i < moodFm.userChoices.length; i++) {
-    if (
-      moodFm.userChoices[i] === undefined ||
-      moodFm.userChoices.length !== 4
-    ) {
+    if (moodFm.userChoices[i] === undefined || moodFm.userChoices.length !== 4) {
       return false;
     }
   }
@@ -143,7 +125,7 @@ moodFm.calcUserMood = function () {
   }
 };
 
-//create a randomizer method
+//create a randomizer method  *********//change name
 moodFm.randomize = function (array) {
   return array[Math.floor(Math.random() * array.length)];
 };
@@ -205,20 +187,21 @@ moodFm.getRandomSongInfo = function (resultsObject) {
 };
 
 moodFm.displaySong = function () {
-  moodFm.html = `<div>
-                            <h3>We think this song matches your current mood:<h3>
-                            <br><img src="./assets/displayResults.svg" class="displayResults" alt="">
+  const html = `<div class="displaySong">
+                            <h4><span>Your Musical Mood:</span><h4>
+                            <img src="./assets/displayResults.svg" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player" role="button">
                             <div class="songDetails">
-                                <h2 class="songTitle">${moodFm.randomSong.trackName}</h3>
+                                <p class="songTitle">${moodFm.randomSong.trackName}</p>
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
                                 <button class="btn btnSmall btnPlay">Click to Listen</button>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
                                 <button class="btn btnSmall btnAnother">Another Song</button>
                                 <button class="btn btnSmall btnRetake">Retake the quiz</button>
                             </div>
+                            <img src="./assets/playIcon.svg" class="playIconImg" alt="play button icon">
                         </div>
                         `;
-  $(".quizResult").html(moodFm.html);
+  $(".quizResultContainer").html(html);
   moodFm.$btnAudio = $(".btnPlay");
   moodFm.$sampleAudio = $("audio");
   moodFm.playOrPauseSong();
@@ -235,9 +218,6 @@ moodFm.playOrPauseSong = function () {
     }
   });
 };
-
-// <button class="btn btnSmall btnAnother">Another Song</button>
-//<button class="btn btnSmall btnRetake">Retake the quiz</button>
 
 // // Another Song
 moodFm.playAnotherSong = function(){

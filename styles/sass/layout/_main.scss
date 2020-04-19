@@ -68,14 +68,10 @@ main {
 
         h4 span::before {
             @include questionHeaderUnderline;
-            height: 28px;
+            height: 30px;
             width: 22%;
+            bottom: 23px;
             background: #92D2DE;
-        }
-
-        .displayResults {
-            width: 50rem;
-            margin: 0 auto;
         }
     }
 }
