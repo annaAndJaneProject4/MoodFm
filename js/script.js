@@ -25,8 +25,8 @@ moodFm.userChoices = []
 // User's mood result base on their score
 moodFm.userMood;
 // Random key word selected from the mood array inside moodFm.results object
-moodFm.songKeyWordIndex;
-moodFm.songKeyWord;
+moodFm.songKeywordIndex;
+moodFm.songKeyword;
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
     {
@@ -39,11 +39,11 @@ moodFm.questionInfo = [
     },
     {
         question: "#questionThree",
-        option: ["rainingWeather", "cloudyWeather", "snowingWeather", "sunnyWeather"],
+        option: ["rainingWeather", "thunderWeather", "snowingWeather", "sunnyWeather"],
     },
     {
         question: "#questionFour",
-        option: ["nothingFood", "comfortFood", "iceCreamFood", "saladFood"],
+        option: ["nothingFood", "comfortFood", "iceCreamFood", "healthyFood"],
     },
 ];
 
@@ -134,13 +134,13 @@ moodFm.randomize = function (array) {
 }
 
 //from there, create a function (using math.random()) that will randomly select ONE of the items from the array
-moodFm.randomSongKeyWord = () => {
+moodFm.getRandomSongKeyword = () => {
     moodFm.calcUserMood();
-    moodFm.songKeyWord = moodFm.randomize(moodFm.userMood);
-    // moodFm.songKeyWordIndex = Math.floor(Math.random() * (moodFm.userMood.length));
-    // moodFm.songKeyWord = moodFm.userMood [moodFm.songKeyWordIndex];
-    console.log(moodFm.songKeyWord);
-    // console.log(moodFm.songKeyWordIndex);
+    moodFm.songKeyword = moodFm.randomize(moodFm.userMood);
+    // moodFm.songKeywordIndex = Math.floor(Math.random() * (moodFm.userMood.length));
+    // moodFm.songKeyword = moodFm.userMood [moodFm.songKeywordIndex];
+    console.log(moodFm.songKeyword);
+    // console.log(moodFm.songKeywordIndex);
 }
 
 moodFm.displayUserResult = () => {
@@ -152,7 +152,7 @@ moodFm.isQuizComplete = function () {
     const isComplete = moodFm.checkForAllArrayItems();
     if (isComplete) {
         moodFm.calcUserScore();
-        moodFm.randomSongKeyWord();
+        moodFm.getRandomSongKeyword();
         moodFm.displayUserResult();
         moodFm.displaySong();
         //resets score to 0 when the quiz is over
