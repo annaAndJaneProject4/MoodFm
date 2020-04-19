@@ -10,7 +10,7 @@
         }
 
         h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             width: 40%; 
             bottom: -8px;
         }
@@ -50,6 +50,14 @@
             width: 178px;
             top: 350px;
             right: 542px;
+        }
+    }
+}
+
+@media (max-width:700px){
+    .quizResultContainer{
+            h4 span::before {
+            @include questionHeaderUnderline(15px);
         }
     }
 }
