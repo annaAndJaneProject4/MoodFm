@@ -1,6 +1,8 @@
 .quizResult {
     .songDetails {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        width:20%;
         // position: absolute;
         // bottom: 28rem;
     }

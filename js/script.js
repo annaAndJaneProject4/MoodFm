@@ -27,6 +27,12 @@ moodFm.userMood;
 // Random key word selected from the mood array inside moodFm.results object
 moodFm.songKeywordIndex;
 moodFm.songKeyword;
+// song result html
+moodFm.html
+
+// moodresultsarray
+moodFm.resultsArray
+
 // array of nested objects which store the question number and an array of possible options for each question
 moodFm.questionInfo = [
   {
@@ -156,6 +162,8 @@ moodFm.isQuizComplete = function () {
     moodFm.getMusicResults(moodFm.songKeyword);
     //resets score to 0 when the quiz is over
     moodFm.userScore = 0;
+    // reset user input array to empty when the quiz is over
+      moodFm.userChoices = []
   } else {
     Swal.fire({
       icon: "error",
@@ -197,21 +205,25 @@ moodFm.getRandomSongInfo = function (resultsObject) {
 };
 
 moodFm.displaySong = function () {
-  const html = `<div>
+  moodFm.html = `<div>
                             <h3>We think this song matches your current mood:<h3>
                             <br><img src="./assets/displayResults.svg" class="displayResults" alt="">
                             <div class="songDetails">
                                 <h2 class="songTitle">${moodFm.randomSong.trackName}</h3>
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
-                                <button class="btn btnSmall">Click to Listen</button>
+                                <button class="btn btnSmall btnPlay">Click to Listen</button>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
+                                <button class="btn btnSmall btnAnother">Another Song</button>
+                                <button class="btn btnSmall btnRetake">Retake the quiz</button>
                             </div>
                         </div>
                         `;
-  $(".quizResult").html(html);
-  moodFm.$btnAudio = $(".btnSmall");
+  $(".quizResult").html(moodFm.html);
+  moodFm.$btnAudio = $(".btnPlay");
   moodFm.$sampleAudio = $("audio");
   moodFm.playOrPauseSong();
+  moodFm.playAnotherSong();
+  moodFm.retakeQuiz();
 };
 
 moodFm.playOrPauseSong = function () {
@@ -224,12 +236,35 @@ moodFm.playOrPauseSong = function () {
   });
 };
 
+// <button class="btn btnSmall btnAnother">Another Song</button>
+//<button class="btn btnSmall btnRetake">Retake the quiz</button>
+
+// // Another Song
+moodFm.playAnotherSong = function(){
+    moodFm.$btnAnotherSong = $(".btnAnother");
+    moodFm.$btnAnotherSong.on('click',function(){
+        console.log('its working')
+        moodFm.randomSong = moodFm.randomize(moodFm.resultsArray)
+        moodFm.displaySong();
+    })
+}
+// Retake the quiz
+moodFm.retakeQuiz = function(){
+    moodFm.$btnRetake = $(".btnRetake")
+    moodFm.$btnRetake.on('click',function(){
+        location.reload();
+        $('html, body').scrollTop(0)
+    })
+}
+
 // ------ INIT FUNCTION ------ //
 moodFm.init = () => {
   moodFm.startQuiz();
   moodFm.smoothScroll("#questionTwo");
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
+//   moodFm.playAnotherSong();
+
 };
 
 // ------ DOCUMENT READY ------ //
