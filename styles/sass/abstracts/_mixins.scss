@@ -1,15 +1,3 @@
-@mixin questionHeaderUnderline($underLineHeight) {
-    content: '';
-    height: $underLineHeight;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-}
-
 @mixin underlineEffect {
     background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
     mix-blend-mode: multiply;

@@ -363,7 +363,7 @@ h3 {
 
 h4 {
   font-size: 3.5rem;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
   position: relative;
   font-weight: 600;
   font-style: italic;
@@ -382,15 +382,19 @@ a {
 
 @media (max-width: 700px) {
   h4 {
-    font-size: 2.7rem;
-    padding-bottom: 1.7rem;
+    font-size: 2.75rem;
   }
 }
 
 @media (max-width: 500px) {
   h4 {
-    font-size: 2.3rem;
-    padding-bottom: 1.5rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  h4 {
+    font-size: 2rem;
   }
 }
 
@@ -491,6 +495,9 @@ a {
   width: 600px;
   height: 600px;
   margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .questionContainer li {
@@ -518,14 +525,6 @@ a {
 .questionContainer li a {
   width: 100%;
   height: 100%;
-  margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: 2rem;
 }
 
 @media (max-width: 1000px) {
@@ -537,20 +536,27 @@ a {
 
 @media (max-width: 700px) {
   .questionContainer {
-    width: 400px;
-    height: 400px;
+    width: 425px;
+    height: 425px;
   }
 }
 
 @media (max-width: 500px) {
   .questionContainer {
-    width: 300px;
-    height: 300px;
+    width: 360px;
+    height: 360px;
   }
   .questionContainer li {
-    width: calc(50% - 8px);
-    height: calc(50% - 8px);
-    margin: 4px;
+    width: calc(50% - 10px);
+    height: calc(50% - 10px);
+    margin: 5px;
+  }
+}
+
+@media (max-width: 420px) {
+  .questionContainer {
+    width: 300px;
+    height: 300px;
   }
 }
 
@@ -901,18 +907,15 @@ main .sectionOne, main .sectionThree, main .sectionFive {
   height: 100vh;
 }
 
+main .sectionOne h4, main .sectionThree h4, main .sectionFive h4 {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
+  mix-blend-mode: multiply;
+  display: inline-block;
+}
+
 main .sectionOne li, main .sectionThree li, main .sectionFive li {
   outline: 4px double #9ae1e5;
-}
-
-main .sectionOne h4 span::before {
-  width: 28%;
-  background: #92D2DE;
-}
-
-main .sectionThree h4 span::before {
-  width: 37%;
-  background: #92D2DE;
 }
 
 main .sectionTwo, main .sectionFour {
@@ -920,18 +923,15 @@ main .sectionTwo, main .sectionFour {
   height: 100vh;
 }
 
+main .sectionTwo h4, main .sectionFour h4 {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #f3dec8));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #f3dec8 20%);
+  mix-blend-mode: multiply;
+  display: inline-block;
+}
+
 main .sectionTwo li, main .sectionFour li {
   outline: 4px double #f3dec8;
-}
-
-main .sectionTwo h4 span::before {
-  width: 43%;
-  background: #f3dec8;
-}
-
-main .sectionFour h4 span::before {
-  width: 23%;
-  background: #f3dec8;
 }
 
 main .sectionFive h4 {
@@ -940,78 +940,14 @@ main .sectionFive h4 {
 }
 
 @media (max-width: 700px) {
-  main .sectionOne h4 span::before,
-  main .sectionTwo h4 span::before,
-  main .sectionThree h4 span::before,
-  main .sectionFour h4 span::before {
-    content: '';
-    height: 15px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
-  main .sectionTwo h4 span::before {
-    width: 53%;
-  }
   main .sectionFive h4 {
     font-size: 4rem;
-  }
-  main .sectionFive h4 span::before {
-    width: 33%;
-    content: '';
-    height: 20px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
   }
 }
 
 @media (max-width: 500px) {
-  main .sectionOne h4 span::before,
-  main .sectionTwo h4 span::before,
-  main .sectionThree h4 span::before,
-  main .sectionFour h4 span::before {
-    content: '';
-    height: 10px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
-  main .sectionOne h4 span::before {
-    width: 38%;
-  }
-  main .sectionThree h4 span::before {
-    width: 47%;
-  }
-  main .sectionTwo h4 span::before {
-    width: 55%;
-  }
   main .sectionFive h4 {
     font-size: 3rem;
-  }
-  main .sectionFive h4 span::before {
-    width: 40%;
-    content: '';
-    height: 15px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
   }
 }
 
