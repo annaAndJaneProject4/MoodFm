@@ -356,9 +356,10 @@ h3 {
   font-style: italic;
   font-weight: 400;
   position: relative;
-  display: inline;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #EADBCC));
   background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #EADBCC 20%);
+  mix-blend-mode: multiply;
+  display: inline;
 }
 
 h4 {
@@ -380,21 +381,9 @@ a {
   }
 }
 
-@media (max-width: 700px) {
-  h4 {
-    font-size: 2.75rem;
-  }
-}
-
 @media (max-width: 500px) {
   h4 {
     font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 420px) {
-  h4 {
-    font-size: 2rem;
   }
 }
 
@@ -408,24 +397,20 @@ a {
   border-radius: 50%;
 }
 
-.red {
+.circleRed {
   background-color: #e74c4c;
 }
 
-.yellow {
+.circleYellow {
   background-color: #F6D754;
 }
 
-.orange {
+.circleOrange {
   background-color: #ffa41b;
 }
 
-.grey {
+.circleGrey {
   background-color: #b6b6b6;
-}
-
-.selected {
-  opacity: 0.2;
 }
 
 .btn {
@@ -440,13 +425,6 @@ a {
   transition: all 0.2s;
 }
 
-.btn:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px #1E8185;
-          box-shadow: 0px 0px 0px 0px #1E8185;
-  margin-top: 15px;
-  margin-bottom: 5px;
-}
-
 .btnLarge {
   display: block;
   margin: 10px 10px 10px 0;
@@ -454,6 +432,13 @@ a {
   -webkit-box-shadow: 0px 5px 0px 0px #1E8185;
           box-shadow: 0px 5px 0px 0px #1E8185;
   text-transform: uppercase;
+}
+
+.btnLarge:hover {
+  -webkit-box-shadow: 0px 0px 0px 0px #1E8185;
+          box-shadow: 0px 0px 0px 0px #1E8185;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .btnSmall {
@@ -470,6 +455,12 @@ a {
   text-shadow: 2px 2px 0 #F6F6F6;
   color: #333333;
   margin: 0;
+}
+
+@media (max-width: 570px) {
+  .btnSmall {
+    width: 180px;
+  }
 }
 
 .swal2-html-container {
@@ -558,6 +549,25 @@ a {
     width: 300px;
     height: 300px;
   }
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #333333;
+  line-height: 1.5;
+  text-shadow: 1px 1px 1.5px #F6F6F6;
+  background-color: rgba(96, 192, 205, 0.74);
+}
+
+footer a {
+  color: #037c8b;
+}
+
+footer a:hover {
+  color: #F6F6F6;
+  text-shadow: none;
+  border-bottom: 1px solid #037c8b;
 }
 
 header {
@@ -911,7 +921,11 @@ main .sectionOne h4, main .sectionThree h4, main .sectionFive h4 {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
   background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
   mix-blend-mode: multiply;
-  display: inline-block;
+  display: inline;
+}
+
+main .sectionOne ul, main .sectionThree ul, main .sectionFive ul {
+  margin-top: 2rem;
 }
 
 main .sectionOne li, main .sectionThree li, main .sectionFive li {
@@ -927,7 +941,11 @@ main .sectionTwo h4, main .sectionFour h4 {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #f3dec8));
   background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #f3dec8 20%);
   mix-blend-mode: multiply;
-  display: inline-block;
+  display: inline;
+}
+
+main .sectionTwo ul, main .sectionFour ul {
+  margin-top: 2rem;
 }
 
 main .sectionTwo li, main .sectionFour li {
@@ -936,7 +954,6 @@ main .sectionTwo li, main .sectionFour li {
 
 main .sectionFive h4 {
   font-size: 5rem;
-  display: inline;
 }
 
 @media (max-width: 700px) {
@@ -974,4 +991,34 @@ main .sectionFive h4 {
 .quizResultContainer .displaySong .artistName {
   font-size: 2rem;
   font-weight: 400;
+}
+
+@media (max-width: 700px) {
+  .quizResultContainer .displaySong h4 {
+    font-size: 3rem;
+  }
+  .quizResultContainer .displaySong .songTitle {
+    font-size: 2rem;
+  }
+  .quizResultContainer .displaySong .artistName {
+    font-size: 1.5rem;
+  }
+  .quizResultContainer .displaySong .displaySongImg {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 570px) {
+  .quizResultContainer .displaySong h4 {
+    font-size: 2.5rem;
+  }
+  .quizResultContainer .displaySong .songTitle {
+    font-size: 1.75rem;
+  }
+  .quizResultContainer .displaySong .artistName {
+    font-size: 1.5rem;
+  }
+  .quizResultContainer .displaySong .displaySongImg {
+    width: 100%;
+  }
 }

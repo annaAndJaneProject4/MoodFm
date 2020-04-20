@@ -1,6 +1,7 @@
-@mixin underlineEffect {
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
+@mixin underlineEffect($underlineColor) {
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, $underlineColor 20%);
     mix-blend-mode: multiply;
+    display: inline;
 }
 
 @mixin responsiveSlideInDown {

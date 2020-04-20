@@ -16,9 +16,11 @@ main {
         height: 100vh;
 
         h4 {
-            background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
-            mix-blend-mode: multiply;
-            display: inline-block;
+            @include underlineEffect(#92D2DE);
+        }
+
+        ul {
+            margin-top: 2rem;
         }
 
         li {
@@ -31,9 +33,11 @@ main {
         height: 100vh;
 
         h4 {
-            background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #f3dec8 20%);
-            mix-blend-mode: multiply;
-            display: inline-block;
+            @include underlineEffect(#f3dec8);
+        }
+
+        ul {
+            margin-top: 2rem;
         }
 
         li {
@@ -44,7 +48,6 @@ main {
     .sectionFive {
         h4 {
             font-size: 5rem;
-            display: inline;
         }
     }
 }

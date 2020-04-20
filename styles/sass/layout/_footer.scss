@@ -1,0 +1,18 @@
+footer { 
+    text-align: center;
+    padding: 20px 0;
+    color: $colorDark;
+    line-height: 1.5;
+    text-shadow: 1px 1px 1.5px $colorWhite;
+    background-color: rgba(96, 192, 205, 0.74);
+
+    a {
+        color: rgb(3, 124, 139);
+
+        &:hover {
+            color: $colorWhite;
+            text-shadow: none;
+            border-bottom: 1px solid rgb(3, 124, 139);
+        } 
+    }
+} 

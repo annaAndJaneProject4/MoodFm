@@ -10,18 +10,18 @@
     letter-spacing: 2px;
     transition: all 0.2s;
 
-    &:hover {
-        box-shadow: 0px 0px 0px 0px #1E8185;
-        margin-top: 15px;
-        margin-bottom: 5px;
-    }
-
     &Large {
         display: block;
         margin: 10px 10px 10px 0;
         padding: 1.8rem 4.3rem;
         box-shadow: 0px 5px 0px 0px #1E8185;
         text-transform: uppercase;
+
+        &:hover {
+            box-shadow: 0px 0px 0px 0px #1E8185;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
     }
 
     &Small {
@@ -38,5 +38,11 @@
            color: $colorDark;
            margin: 0;
        }
+    }
+}
+
+@media (max-width: 570px) {
+    .btnSmall {
+        width: 180px;
     }
 }

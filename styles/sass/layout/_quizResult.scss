@@ -1,18 +1,10 @@
 .quizResultContainer {    
-        .displaySong {
-
+    .displaySong {
         h4 {
-            @include underlineEffect;
-            display: inline;
+            @include underlineEffect(#92D2DE);
             font-size: 3.4rem;  
             padding-bottom: 0;
         }
-
-        // .displaySongImg {
-        //     width: 53rem;
-        //     margin: 0 auto;
-        //     padding-top: 2rem;
-        // }
 
         .displaySongImg {
             width: 34rem;
@@ -28,6 +20,50 @@
         .artistName {
             font-size: 2rem;
             font-weight: 400;
+        }
+    }
+}
+
+@media (max-width: 700px){
+    .quizResultContainer {
+        .displaySong {
+            h4 {
+                font-size: 3rem;
+            }
+
+            .songTitle {
+                font-size: 2rem;
+            }   
+
+            .artistName {
+              font-size: 1.5rem;
+            }
+
+            .displaySongImg {
+                width: 30rem;
+            }
+        }
+    }
+}
+
+@media (max-width:570px){
+    .quizResultContainer {
+        .displaySong {
+            h4 {
+                font-size: 2.5rem;
+            }
+
+            .songTitle {
+                font-size: 1.75rem;
+            }   
+
+            .artistName {
+              font-size: 1.5rem;
+            }
+
+            .displaySongImg {
+                width: 100%;
+            }
         }
     }
 }
