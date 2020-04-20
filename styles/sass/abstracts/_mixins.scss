@@ -1,6 +1,6 @@
-@mixin questionHeaderUnderline {
+@mixin questionHeaderUnderline($underLineHeight) {
     content: '';
-    height: 25px;
+    height: $underLineHeight;
     position: absolute;
     bottom: 25px;
     left: 24%;

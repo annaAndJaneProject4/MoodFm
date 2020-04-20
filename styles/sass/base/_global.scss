@@ -42,3 +42,23 @@ a {
     text-decoration: none;
     color: $colorDark;
 }
+
+@media (max-width:1000px) {
+    h4 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width:700px){
+    h4 {
+        font-size: 2.7rem;
+        padding-bottom: 1.7rem;
+    }
+}
+
+@media (max-width:500px){
+    h4 {
+        font-size: 2.3rem;
+        padding-bottom: 1.5rem;
+    }
+}

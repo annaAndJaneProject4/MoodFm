@@ -264,8 +264,8 @@ textarea {
 @media (max-width: 1388px) {
   @-webkit-keyframes slideInDown {
     0% {
-      -webkit-transform: translate3d(0, -40%, 0);
-      transform: translate3d(0, -40%, 0);
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
     }
     100% {
       -webkit-transform: translate3d(0, 40%, 0);
@@ -274,8 +274,54 @@ textarea {
   }
   @keyframes slideInDown {
     0% {
-      -webkit-transform: translate3d(0, -40%, 0);
-      transform: translate3d(0, -40%, 0);
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 40%, 0);
+      transform: translate3d(0, 40%, 0);
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  @-webkit-keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -65%, 0);
+      transform: translate3d(0, -65%, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, -20%, 0);
+      transform: translate3d(0, -20%, 0);
+    }
+  }
+  @keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -65%, 0);
+      transform: translate3d(0, -65%, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, -20%, 0);
+      transform: translate3d(0, -20%, 0);
+    }
+  }
+}
+
+@media (max-width: 725px) {
+  @-webkit-keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
+    }
+    100% {
+      -webkit-transform: translate3d(0, 40%, 0);
+      transform: translate3d(0, 40%, 0);
+    }
+  }
+  @keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
     }
     100% {
       -webkit-transform: translate3d(0, 40%, 0);
@@ -326,6 +372,26 @@ h4 {
 a {
   text-decoration: none;
   color: #333333;
+}
+
+@media (max-width: 1000px) {
+  h4 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  h4 {
+    font-size: 2.7rem;
+    padding-bottom: 1.7rem;
+  }
+}
+
+@media (max-width: 500px) {
+  h4 {
+    font-size: 2.3rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .wrapper {
@@ -462,6 +528,32 @@ a {
   font-size: 2rem;
 }
 
+@media (max-width: 1000px) {
+  .questionContainer {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 700px) {
+  .questionContainer {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .questionContainer {
+    width: 300px;
+    height: 300px;
+  }
+  .questionContainer li {
+    width: calc(50% - 8px);
+    height: calc(50% - 8px);
+    margin: 4px;
+  }
+}
+
 header {
   height: 100vh;
   background-color: #ffefdf;
@@ -596,7 +688,7 @@ header .musicNotesIcon {
             justify-content: center;
   }
   header img {
-    width: 60rem;
+    width: 54rem;
   }
   header .headerTitleBox {
     padding: 3.5rem 5rem;
@@ -634,12 +726,23 @@ header .musicNotesIcon {
 
 @media (max-width: 860px) {
   header {
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  header h1 {
+    font-size: 7.5rem;
+  }
+  header h2 {
+    margin: 0;
+    position: relative;
+    bottom: 15px;
+  }
+  header h2.border::before, header h2.border::after {
+    display: none;
   }
   header .headerTitleBox {
-    padding: 3rem 5rem;
+    padding: 3rem 6rem;
   }
   header .headerContent {
     display: -webkit-box;
@@ -662,8 +765,9 @@ header .musicNotesIcon {
     width: 100%;
   }
   header img {
-    width: 42rem;
+    width: 39rem;
     position: relative;
+    bottom: 10px;
     z-index: 2;
   }
   header h3 {
@@ -677,8 +781,12 @@ header .musicNotesIcon {
   header h1 {
     font-size: 7.5rem;
   }
+  header .headerTitleBox {
+    padding: 3rem 5rem;
+  }
   header img {
     width: 38rem;
+    bottom: 0;
   }
 }
 
@@ -688,6 +796,85 @@ header .musicNotesIcon {
   }
   header img {
     width: 35rem;
+  }
+}
+
+@media (max-width: 615px) {
+  header h1 {
+    font-size: 6.5rem;
+  }
+  header img {
+    width: 33rem;
+  }
+}
+
+@media (max-width: 580px) {
+  header h1 {
+    font-size: 6rem;
+  }
+  header h2 {
+    margin: 0.3rem 0 0.6rem;
+  }
+  header h2.border::before, header h2.border::after {
+    width: 60px;
+  }
+  header h2.border:before {
+    margin: 18px 0 0 -70px;
+  }
+  header .headerTitleBox {
+    padding: 2.5rem 4rem;
+  }
+  header img {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 520px) {
+  header h1 {
+    font-size: 5.5rem;
+  }
+  header img {
+    width: 28rem;
+  }
+}
+
+@media (max-width: 485px) {
+  header h1 {
+    font-size: 4.7rem;
+  }
+  header img {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 435px) {
+  header h1 {
+    font-size: 4rem;
+  }
+  header h2.border::before, header h2.border::after {
+    display: none;
+  }
+  header h2.border span {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  header .headerTitleBox {
+    padding: 3rem 3.5rem;
+  }
+  header img {
+    width: 22rem;
+  }
+}
+
+@media (max-width: 385px) {
+  header h1 {
+    font-size: 4rem;
+  }
+  header .headerTitleBox {
+    padding: 3rem 2rem;
+  }
+  header img {
+    width: 19rem;
   }
 }
 
@@ -719,29 +906,11 @@ main .sectionOne li, main .sectionThree li, main .sectionFive li {
 }
 
 main .sectionOne h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
   width: 28%;
   background: #92D2DE;
 }
 
 main .sectionThree h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
   width: 37%;
   background: #92D2DE;
 }
@@ -756,39 +925,94 @@ main .sectionTwo li, main .sectionFour li {
 }
 
 main .sectionTwo h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
   width: 43%;
   background: #f3dec8;
 }
 
 main .sectionFour h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
   width: 23%;
   background: #f3dec8;
 }
 
 main .sectionFive h4 {
   font-size: 5rem;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
-  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
-  mix-blend-mode: multiply;
   display: inline;
+}
+
+@media (max-width: 700px) {
+  main .sectionOne h4 span::before,
+  main .sectionTwo h4 span::before,
+  main .sectionThree h4 span::before,
+  main .sectionFour h4 span::before {
+    content: '';
+    height: 15px;
+    position: absolute;
+    bottom: 25px;
+    left: 24%;
+    right: 25%;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    margin: 0 auto;
+  }
+  main .sectionTwo h4 span::before {
+    width: 53%;
+  }
+  main .sectionFive h4 {
+    font-size: 4rem;
+  }
+  main .sectionFive h4 span::before {
+    width: 33%;
+    content: '';
+    height: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 24%;
+    right: 25%;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  main .sectionOne h4 span::before,
+  main .sectionTwo h4 span::before,
+  main .sectionThree h4 span::before,
+  main .sectionFour h4 span::before {
+    content: '';
+    height: 10px;
+    position: absolute;
+    bottom: 25px;
+    left: 24%;
+    right: 25%;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    margin: 0 auto;
+  }
+  main .sectionOne h4 span::before {
+    width: 38%;
+  }
+  main .sectionThree h4 span::before {
+    width: 47%;
+  }
+  main .sectionTwo h4 span::before {
+    width: 55%;
+  }
+  main .sectionFive h4 {
+    font-size: 3rem;
+  }
+  main .sectionFive h4 span::before {
+    width: 40%;
+    content: '';
+    height: 15px;
+    position: absolute;
+    bottom: 25px;
+    left: 24%;
+    right: 25%;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    margin: 0 auto;
+  }
 }
 
 .quizResultContainer .displaySong h4 {

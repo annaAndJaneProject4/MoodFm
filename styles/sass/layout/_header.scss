@@ -104,7 +104,7 @@ header {
         }
 
         img {
-            width: 60rem;
+            width: 54rem;
         }
 
         .headerTitleBox {
@@ -149,10 +149,24 @@ header {
 
 @media (max-width: 860px) {
     header {
-        align-items: flex-end;
+        align-items: center;
+
+        h1 {
+            font-size: 7.5rem;
+        }
+
+        h2 {
+            margin: 0;
+            position: relative;
+            bottom: 15px;
+        }      
+
+        h2.border::before, h2.border::after {
+            display: none;
+        }
 
         .headerTitleBox {
-            padding: 3rem 5rem;
+            padding: 3rem 6rem;
         }
 
         .headerContent {
@@ -175,8 +189,9 @@ header {
         }
 
         img {
-            width: 42rem;
+            width: 39rem;
             position: relative;
+            bottom: 10px;
             z-index: 2;
         }
 
@@ -194,8 +209,13 @@ header {
             font-size: 7.5rem;
         }
 
+        .headerTitleBox {
+            padding: 3rem 5rem;
+        }
+
         img {
             width: 38rem;
+            bottom: 0;
         }
     }
 }
@@ -208,6 +228,111 @@ header {
 
         img {
             width: 35rem;
+        }
+    }
+}
+
+@media (max-width: 615px) {
+    header {
+        h1 {
+            font-size: 6.5rem;
+        }
+
+        img {
+            width: 33rem;
+        }
+    }
+}
+
+@media (max-width: 580px) {
+    header {
+        h1 {
+            font-size: 6rem;
+        }
+
+        h2 {
+            margin: 0.3rem 0 0.6rem;
+        }
+
+        h2.border::before, h2.border::after {
+            width: 60px;
+        }
+
+        h2.border:before {
+		    margin: 18px 0 0 -70px;
+	    }
+        
+        .headerTitleBox {
+            padding: 2.5rem 4rem;
+        }
+
+        img {
+            width: 30rem;
+        }
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        h1 {
+            font-size: 5.5rem;
+        }
+
+        img {
+            width: 28rem;
+        }
+    }
+}
+
+@media (max-width: 485px) {
+    header {
+        h1 {
+            font-size: 4.7rem;
+        }
+
+        img {
+            width: 25rem;
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    header {
+        h1 {
+            font-size: 4rem;
+        }
+
+        h2.border::before, h2.border::after {
+            display: none;
+        }
+
+        h2.border span {
+            font-size: 18px;
+            letter-spacing: 1px;
+	    }   
+     
+        .headerTitleBox {
+            padding: 3rem 3.5rem;
+        }
+
+        img {
+            width: 22rem;
+        }
+    }
+}
+
+@media (max-width: 385px) {
+     header {
+        h1 {
+            font-size: 4rem;
+        }
+
+        .headerTitleBox {
+            padding: 3rem 2rem;
+        }
+
+        img {
+            width: 19rem;
         }
     }
 }
