@@ -14,3 +14,29 @@
     background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
     mix-blend-mode: multiply;
 }
+
+@mixin responsiveSlideInDown {
+    @-webkit-keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -30%, 0);
+              transform: translate3d(0, -30%, 0);
+    }
+
+    100% {
+      -webkit-transform: translate3d(0, 40%, 0);
+              transform: translate3d(0, 40%, 0);
+    }
+  }
+
+  @keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -30%, 0);
+              transform: translate3d(0, -30%, 0);
+    }
+
+    100% {
+      -webkit-transform: translate3d(0, 40%, 0);
+              transform: translate3d(0, 40%, 0);
+    }
+  }
+}
