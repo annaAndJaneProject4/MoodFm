@@ -1,12 +1,1 @@
-@mixin questionHeaderUnderline($underLineHeight) {
-    content: '';
-    height: $underLineHeight;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-}
 

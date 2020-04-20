@@ -288,30 +288,12 @@ h3 {
   position: relative;
 }
 
-h3 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
-  height: 20px;
-  left: 0;
-  right: 110%;
-  bottom: 4px;
-  width: 105%;
-  background: #EADBCC;
-}
-
 h4 {
   font-size: 3.5rem;
-  padding-bottom: 2rem;
   position: relative;
   font-weight: 600;
   font-style: italic;
+  margin: 2rem;
 }
 
 a {
@@ -373,14 +355,12 @@ a {
 @media (max-width: 700px) {
   h4 {
     font-size: 2.7rem;
-    padding-bottom: 1.7rem;
   }
 }
 
 @media (max-width: 500px) {
   h4 {
     font-size: 2.3rem;
-    padding-bottom: 1.5rem;
   }
 }
 
@@ -442,6 +422,7 @@ a {
 .questionContainer li {
   width: calc(50% - 16px);
   height: calc(50% - 16px);
+  margin-top: 2rem;
   margin: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -632,41 +613,20 @@ main section img {
   margin: auto;
 }
 
-main .sectionOne, main .sectionThree, main .sectionFive {
+main .sectionOne, main .sectionThree {
   background-color: #9ae1e5bb;
   height: 100vh;
 }
 
-main .sectionOne li, main .sectionThree li, main .sectionFive li {
+main .sectionOne li, main .sectionThree li {
   outline: 4px double #9ae1e5;
 }
 
-main .sectionOne h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
+main .sectionOne h4, main .sectionThree h4 {
+  display: inline;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
   mix-blend-mode: multiply;
-  margin: 0 auto;
-  width: 28%;
-  background: #92D2DE;
-}
-
-main .sectionThree h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
-  width: 37%;
-  background: #92D2DE;
 }
 
 main .sectionTwo, main .sectionFour {
@@ -678,127 +638,36 @@ main .sectionTwo li, main .sectionFour li {
   outline: 4px double #f3dec8;
 }
 
-main .sectionTwo h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
+main .sectionTwo h4, main .sectionFour h4 {
+  display: inline;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #f3dec8));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #f3dec8 20%);
   mix-blend-mode: multiply;
-  margin: 0 auto;
-  width: 43%;
-  background: #f3dec8;
-}
-
-main .sectionFour h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
-  mix-blend-mode: multiply;
-  margin: 0 auto;
-  width: 23%;
-  background: #f3dec8;
 }
 
 main .sectionFive h4 {
   font-size: 5rem;
-}
-
-main .sectionFive h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
+  display: inline;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
   mix-blend-mode: multiply;
-  margin: 0 auto;
-  height: 30px;
-  width: 22%;
-  bottom: 23px;
-  background: #92D2DE;
 }
 
 @media (max-width: 700px) {
-  main .sectionOne h4 span::before,
-  main .sectionTwo h4 span::before,
-  main .sectionThree h4 span::before,
-  main .sectionFour h4 span::before {
-    content: '';
-    height: 15px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
-  main .sectionTwo h4 span::before {
-    width: 53%;
+  main .sectionOne h4 span,
+  main .sectionTwo h4 span,
+  main .sectionThree h4 span,
+  main .sectionFour h4 span {
+    margin: 2rem;
   }
   main .sectionFive h4 {
     font-size: 4rem;
   }
-  main .sectionFive h4 span::before {
-    width: 33%;
-    content: '';
-    height: 20px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 500px) {
-  main .sectionOne h4 span::before,
-  main .sectionTwo h4 span::before,
-  main .sectionThree h4 span::before,
-  main .sectionFour h4 span::before {
-    content: '';
-    height: 10px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
-  main .sectionOne h4 span::before {
-    width: 38%;
-  }
-  main .sectionThree h4 span::before {
-    width: 47%;
-  }
-  main .sectionTwo h4 span::before {
-    width: 55%;
-  }
   main .sectionFive h4 {
     font-size: 3rem;
-  }
-  main .sectionFive h4 span::before {
-    width: 40%;
-    content: '';
-    height: 15px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
   }
 }
 
@@ -813,20 +682,10 @@ main .sectionFive h4 span::before {
 .quizResultContainer .displaySong h4 {
   font-size: 3.5rem;
   padding: 0;
-}
-
-.quizResultContainer .displaySong h4 span::before {
-  content: '';
-  height: 25px;
-  position: absolute;
-  bottom: 25px;
-  left: 24%;
-  right: 25%;
-  z-index: 0;
+  display: inline;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(255, 255, 255, 0)), color-stop(20%, #92D2DE));
+  background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
   mix-blend-mode: multiply;
-  margin: 0 auto;
-  width: 40%;
-  bottom: -8px;
 }
 
 .quizResultContainer .displaySong .displaySongImg {
@@ -864,18 +723,4 @@ main .sectionFive h4 span::before {
   width: 178px;
   top: 350px;
   right: 542px;
-}
-
-@media (max-width: 700px) {
-  .quizResultContainer h4 span::before {
-    content: '';
-    height: 15px;
-    position: absolute;
-    bottom: 25px;
-    left: 24%;
-    right: 25%;
-    z-index: 0;
-    mix-blend-mode: multiply;
-    margin: 0 auto;
-  }
 }

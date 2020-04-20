@@ -11,28 +11,17 @@ main {
         }
     } 
     
-    .sectionOne, .sectionThree, .sectionFive {
+    .sectionOne, .sectionThree {
         background-color: $colorBlueLight;
         height: 100vh;
 
         li {
             outline: 4px double $colorBlue;
         }
-    }
-
-    .sectionOne {
-        h4 span::before {
-            @include questionHeaderUnderline(25px);
-            width: 28%;
-            background: #92D2DE;
-        }
-    }
-
-    .sectionThree {
-        h4 span::before {
-            @include questionHeaderUnderline(25px);
-            width: 37%;
-            background: #92D2DE;
+        h4{
+            display: inline;
+            background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
+            mix-blend-mode: multiply;
         }
     }
 
@@ -43,35 +32,19 @@ main {
         li {
             outline: 4px double #f3dec8;
         }
-    }
-
-    .sectionTwo {
-         h4 span::before {
-            @include questionHeaderUnderline(25px);
-            width: 43%;
-            background: #f3dec8;  
-        }
-    }
-
-    .sectionFour {
-        h4 span::before {
-            @include questionHeaderUnderline(25px);
-            width: 23%;
-            background: #f3dec8;  
+        h4{
+            display: inline;
+            background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #f3dec8 20%);
+            mix-blend-mode: multiply;
         }
     }
 
     .sectionFive {
         h4 {
             font-size: 5rem;
-        }
-
-        h4 span::before {
-            @include questionHeaderUnderline(25px);
-            height: 30px;
-            width: 22%;
-            bottom: 23px;
-            background: #92D2DE;
+            display: inline;
+            background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
+            mix-blend-mode: multiply;
         }
     }
 }
@@ -84,24 +57,14 @@ main {
         .sectionTwo,
         .sectionThree,
         .sectionFour{
-            h4 span::before {
-                @include questionHeaderUnderline(15px);
-            }
-        }
-
-        .sectionTwo {
-            h4 span::before {
-                width: 53%;
+            h4 span{
+                margin:2rem;
             }
         }
 
         .sectionFive {
             h4{
                 font-size:4rem;
-            }
-            h4 span::before {
-                width: 33%;
-                @include questionHeaderUnderline(20px);
             }
         }
         
@@ -110,40 +73,17 @@ main {
 
 @media (max-width:500px){
     main{
-        .sectionOne,
-        .sectionTwo,
-        .sectionThree,
-        .sectionFour{
-            h4 span::before {
-                @include questionHeaderUnderline(10px);
-            }
-        }
-
-        .sectionOne {
-            h4 span::before {
-                width: 38%;
-            }
-        }
-
-        .sectionThree {
-            h4 span::before {
-                width: 47%;
-            }
-        }
-
-        .sectionTwo {
-            h4 span::before {
-                width: 55%;
-            }
-        }
+        // .sectionOne,
+        // .sectionTwo,
+        // .sectionThree,
+        // .sectionFour{
+        //     h4{
+        //     }
+        // }
 
         .sectionFive {
             h4{
                 font-size:3rem;
-            }
-            h4 span::before {
-                width: 40%;
-                @include questionHeaderUnderline(15px);
             }
         }
     }
