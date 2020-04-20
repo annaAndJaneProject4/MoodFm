@@ -22,7 +22,7 @@ main {
 
     .sectionOne {
         h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             width: 28%;
             background: #92D2DE;
         }
@@ -30,7 +30,7 @@ main {
 
     .sectionThree {
         h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             width: 37%;
             background: #92D2DE;
         }
@@ -47,7 +47,7 @@ main {
 
     .sectionTwo {
          h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             width: 43%;
             background: #f3dec8;  
         }
@@ -55,7 +55,7 @@ main {
 
     .sectionFour {
         h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             width: 23%;
             background: #f3dec8;  
         }
@@ -67,7 +67,7 @@ main {
         }
 
         h4 span::before {
-            @include questionHeaderUnderline;
+            @include questionHeaderUnderline(25px);
             height: 30px;
             width: 22%;
             bottom: 23px;
@@ -75,3 +75,77 @@ main {
         }
     }
 }
+
+
+
+@media (max-width:700px){
+    main{
+        .sectionOne,
+        .sectionTwo,
+        .sectionThree,
+        .sectionFour{
+            h4 span::before {
+                @include questionHeaderUnderline(15px);
+            }
+        }
+
+        .sectionTwo {
+            h4 span::before {
+                width: 53%;
+            }
+        }
+
+        .sectionFive {
+            h4{
+                font-size:4rem;
+            }
+            h4 span::before {
+                width: 33%;
+                @include questionHeaderUnderline(20px);
+            }
+        }
+        
+    }
+}
+
+@media (max-width:500px){
+    main{
+        .sectionOne,
+        .sectionTwo,
+        .sectionThree,
+        .sectionFour{
+            h4 span::before {
+                @include questionHeaderUnderline(10px);
+            }
+        }
+
+        .sectionOne {
+            h4 span::before {
+                width: 38%;
+            }
+        }
+
+        .sectionThree {
+            h4 span::before {
+                width: 47%;
+            }
+        }
+
+        .sectionTwo {
+            h4 span::before {
+                width: 55%;
+            }
+        }
+
+        .sectionFive {
+            h4{
+                font-size:3rem;
+            }
+            h4 span::before {
+                width: 40%;
+                @include questionHeaderUnderline(15px);
+            }
+        }
+    }
+}
+

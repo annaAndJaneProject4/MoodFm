@@ -32,3 +32,30 @@
         }
     }
 }
+
+@media (max-width:1000px) {
+    .questionContainer{
+        width:500px;
+        height:500px;
+    }
+}
+
+@media (max-width:700px) {
+    .questionContainer{
+        width:400px;
+        height:400px;
+    }
+}
+
+@media (max-width:500px) {
+    .questionContainer{
+        width:300px;
+        height:300px;
+        li{
+            width: calc(50% - 8px);
+            height: calc(50% - 8px);
+            margin:4px;
+        }
+    }
+
+}
