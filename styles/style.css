@@ -414,52 +414,56 @@ a {
 }
 
 .btn {
-  border: none;
+  border: 4px double #F6F6F6;
   border-radius: 5rem;
+  background: #60C0CD;
   font-size: 1.5rem;
   color: #F6F6F6;
   text-shadow: 2px 2px 0 #333333;
-  background: #5DC8CD;
   letter-spacing: 2px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+}
+
+.btnLarge:hover, .btnSmall:hover {
+  background: transparent;
+  border: 4px double #60C0CD;
+  text-shadow: 2px 2px 0 #F6F6F6;
+  color: #333333;
 }
 
 .btnLarge {
   display: block;
-  margin: 10px 10px 10px 0;
-  padding: 1.8rem 4.3rem;
-  -webkit-box-shadow: 0px 5px 0px 0px #1E8185;
-          box-shadow: 0px 5px 0px 0px #1E8185;
+  margin: 2rem auto;
   text-transform: uppercase;
-}
-
-.btnLarge:hover {
-  -webkit-box-shadow: 0px 0px 0px 0px #1E8185;
-          box-shadow: 0px 0px 0px 0px #1E8185;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  width: 320px;
+  height: 90px;
 }
 
 .btnSmall {
   font-size: 1rem;
   width: 170px;
   height: 50px;
-  background: #60C0CD;
-  border: 4px double #F6F6F6;
 }
 
-.btnSmall:hover {
-  background: transparent;
-  border: 4px double #60C0CD;
-  text-shadow: 2px 2px 0 #F6F6F6;
-  color: #333333;
-  margin: 0;
+@media (max-width: 700px) {
+  .btnLarge {
+    font-size: 1.3rem;
+    width: 280px;
+    height: 70px;
+  }
 }
 
 @media (max-width: 570px) {
   .btnSmall {
     width: 180px;
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .btnLarge {
+    font-size: 1.1rem;
+    width: 220px;
+    height: 55px;
   }
 }
 
