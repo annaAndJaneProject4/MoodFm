@@ -64,14 +64,8 @@ main {
     .sectionFive {
         h4 {
             font-size: 5rem;
-        }
-
-        h4 span::before {
-            @include questionHeaderUnderline;
-            height: 30px;
-            width: 22%;
-            bottom: 23px;
-            background: #92D2DE;
+            @include underlineEffect;
+            display: inline;
         }
     }
 }

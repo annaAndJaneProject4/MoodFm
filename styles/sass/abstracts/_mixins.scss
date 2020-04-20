@@ -9,3 +9,8 @@
     mix-blend-mode: multiply;
     margin: 0 auto;
 }
+
+@mixin underlineEffect {
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #92D2DE 20%);
+    mix-blend-mode: multiply;
+}

@@ -156,7 +156,7 @@ moodFm.isQuizComplete = function () {
 };
 
 moodFm.submitUserChoices = () => {
-  $("button").on("click", function (e) {
+  $(".btnLarge").on("click", function (e) {
     e.preventDefault();
     moodFm.isQuizComplete();
   });
@@ -188,21 +188,23 @@ moodFm.getRandomSongInfo = function (resultsObject) {
 
 moodFm.displaySong = function () {
   const html = `<div class="displaySong">
-                            <h4><span>Your Musical Mood:</span><h4>
-                            <img src="./assets/displayResults.svg" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player" role="button">
+                            <h4>Your Musical Mood:<h4>
                             <div class="songDetails">
                                 <p class="songTitle">${moodFm.randomSong.trackName}</p>
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
-                                <button class="btn btnSmall btnPlay">Click to Listen</button>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
-                                <button class="btn btnSmall btnAnother">Another Song</button>
-                                <button class="btn btnSmall btnRetake">Retake the quiz</button>
+                                
+                                <img src="./assets/test1.png" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player">
+    
+                                <button class="btn btnSmall btnAnother">Next Song</button>
+                                <button class="btn btnSmall btnPlay">Click to Listen</button>
+                                <button class="btn btnSmall btnRetake">Retake the Quiz</button>
                             </div>
-                            <img src="./assets/playIcon.svg" class="playIconImg" alt="play button icon">
                         </div>
                         `;
   $(".quizResultContainer").html(html);
   moodFm.$btnAudio = $(".btnPlay");
+  moodFm.$btnAnotherSong = $(".btnAnother");
   moodFm.$sampleAudio = $("audio");
   moodFm.playOrPauseSong();
   moodFm.playAnotherSong();
@@ -221,10 +223,9 @@ moodFm.playOrPauseSong = function () {
 
 // // Another Song
 moodFm.playAnotherSong = function(){
-    moodFm.$btnAnotherSong = $(".btnAnother");
+  moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
     moodFm.$btnAnotherSong.on('click',function(){
         console.log('its working')
-        moodFm.randomSong = moodFm.randomize(moodFm.resultsArray)
         moodFm.displaySong();
     })
 }

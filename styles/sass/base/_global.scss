@@ -4,6 +4,7 @@ body {
 
 h1, h2, h3, h4 {
     font-family: $fontPrimary;
+    text-shadow: 2px 2px 0 $colorWhite;
 }
 
 h1 {
@@ -23,16 +24,8 @@ h3 {
     font-style: italic;
     font-weight: 400;
     position: relative;
-
-    & span::before {
-        @include questionHeaderUnderline;
-        height: 20px;
-        left: 0;
-        right: 110%;
-        bottom: 4px;
-        width: 105%;
-        background: #EADBCC;
-    }
+    display: inline;
+    background-image: linear-gradient(rgba(255, 255, 255, 0) 60%, #EADBCC 20%);
 }
 
 h4 {
@@ -48,44 +41,4 @@ h4 {
 a {
     text-decoration: none;
     color: $colorDark;
-}
-
-.btn {
-    border: none;
-    color: $colorDark;
-    border-radius: 5rem;
-    font-size: 1.5rem;
-    margin: 10px 10px 10px 0;
-    color: $colorWhite;
-    text-shadow: 2px 2px 0 #a5a5a5;
-    background: #5DC8CD;
-    box-shadow: 0px 5px 0px 0px #1E8185;
-    transition: all 0.2s;
-
-    &:hover {
-        box-shadow: 0px 0px 0px 0px #1E8185;
-        margin-top: 15px;
-        margin-bottom: 5px;
-    }
-
-    &Large {
-        padding: 1.8rem 4.3rem;
-        text-transform: uppercase;
-    }
-
-    &Small {
-        font-size: 1rem;
-        background: transparent;
-        border: 1px dashed #535461;
-        color: #535461;
-        text-shadow: none;
-        box-shadow: none;
-        margin: 0;
-        padding: 0.5rem 2.5rem;
-
-        &:hover {
-            box-shadow: none;
-            margin: 0;
-        }
-    }
 }

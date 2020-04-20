@@ -80,12 +80,134 @@ header {
         margin: 0 auto;
     }
 
-    i {
+    .startIcon {
         font-size: 4rem;
         color: $colorBlueLight;
     }
 
     .musicNotesIcon {
         width: 2.5rem;
+    }
+}
+
+@media (max-width: 1388px) {
+    header {
+        align-items: center;
+
+        .headerContent {
+            justify-content: center;
+        }
+
+        .headerImage {
+            display: flex;
+            justify-content: center;
+        }
+
+        img {
+            width: 60rem;
+        }
+
+        .headerTitleBox {
+            padding: 3.5rem 5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 10rem;
+            margin-right: 0;
+            align-self: right;
+            position: relative;
+            left: 1rem;
+            bottom: 0.6rem;
+        }
+
+        .startIcon {
+            font-size: 3.5rem;
+        }
+
+        .musicNotesIcon {
+            width: 2rem;
+        }
+    }
+}
+
+@media (max-width: 1040px) {
+    header {
+        img {
+            width: 55rem;
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    header {
+        img {
+            width: 50rem;
+        }
+    }
+}
+
+@media (max-width: 860px) {
+    header {
+        align-items: flex-end;
+
+        .headerTitleBox {
+            padding: 3rem 5rem;
+        }
+
+        .headerContent {
+            display: flex;
+            flex-direction: column;
+            position: static;
+            margin-bottom: 1rem;
+        }
+
+        .headerTitle {
+            position: relative;
+            top: 6rem;
+            z-index: 1;
+            // margin: 0 auto;
+            width: 100%;
+        }
+    
+         .headerImage {
+            width: 100%;
+        }
+
+        img {
+            width: 42rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        h3 {
+            margin: 0;
+            position: relative;
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 725px) {
+    header {
+        h1 {
+            font-size: 7.5rem;
+        }
+
+        img {
+            width: 38rem;
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    header {
+        h1 {
+            font-size: 7rem;
+        }
+
+        img {
+            width: 35rem;
+        }
     }
 }
