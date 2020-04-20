@@ -1,4 +1,4 @@
-//animation used for in header to begin moodFmApp
+//animation used for header to begin moodFmApp
 .slideInDown {
 	-webkit-animation: slideInDown 1s infinite both;
 	        animation: slideInDown 1s infinite both;
@@ -26,4 +26,38 @@
     -webkit-transform: translate3d(0, -20%, 0);
             transform: translate3d(0, -20%, 0);
   }
+}
+
+@media (max-width: 1388px) {
+  @include responsiveSlideInDown;
+}
+
+@media (max-width: 860px) {
+  @-webkit-keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -65%, 0);
+              transform: translate3d(0, -65%, 0);
+    }
+
+    100% {
+      -webkit-transform: translate3d(0, -20%, 0);
+              transform: translate3d(0, -20%, 0);
+    }
+  }
+
+  @keyframes slideInDown {
+    0% {
+      -webkit-transform: translate3d(0, -65%, 0);
+              transform: translate3d(0, -65%, 0);
+    }
+
+    100% {
+      -webkit-transform: translate3d(0, -20%, 0);
+              transform: translate3d(0, -20%, 0);
+    }
+  }
+}
+
+@media (max-width: 725px) {
+    @include responsiveSlideInDown;
 }

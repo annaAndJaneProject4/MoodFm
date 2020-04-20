@@ -24,18 +24,18 @@
 
     <header id="#startSection">
         <div class="headerContainer wrapper">
-            <div class="headerContent ">
-                <div class="headerImage">
-                    <img src="assets/headerHeroImage.svg" alt="">
-                </div>
+            <div class="headerContent">
                 <div class="headerTitle">
                     <div class="headerTitleBox">
                         <h1>Mood.fm</h1>
                         <h2 class="border"><span>Music to Match Your Mood</span></h2>
                     </div>
                     <!-- Music by Storm Icons from the Noun Project -->
-                    <h3><span>You are what you listen to. <img src="./assets/musicNotes.svg" class="musicNotesIcon"
-                                alt=""></span></h3>
+                    <h3>You are what you listen to. <img src="./assets/musicNotes.svg" class="musicNotesIcon"
+                                alt=""></h3>
+                </div>
+                <div class="headerImage">
+                    <img src="assets/headerHeroImage.svg" alt="">
                 </div>
             </div>
             <!-- link to proceed to main section -->
@@ -51,28 +51,28 @@
     <main id="#mainContent">
         <section class="sectionOne" id="questionOne">
             <div class="wrapper">
-                <h4><span>Pick a color:</span></h4>
+                <h4>Pick a color:</h4>
                 <ul class="questionContainer">
                     <li>
-                        <a href="#questionTwo" data-value="redColor" aria-label="option one of question one: red colored circle " class="options circle red"></a>
+                        <a href="#questionTwo" data-value="redColor" aria-label="option one of question one: red colored circle " class="options circle circleRed"></a>
                     </li>
                     <li>
                         <a href="#questionTwo" data-value="yellowColor" aria-label="option two of question one: yellow colored circle"
-                            class="options circle yellow"></a>
+                            class="options circle circleYellow"></a>
                     </li>
                     <li>
                         <a href="#questionTwo" data-value="orangeColor" aria-label="option three of question one: orange colored circle"
-                            class="options circle orange"></a>
+                            class="options circle circleOrange"></a>
                     </li>
                     <li>
-                        <a href="#questionTwo" data-value="greyColor" aria-label="option four of question one: grey colored circle" class="options circle grey"></a>
+                        <a href="#questionTwo" data-value="greyColor" aria-label="option four of question one: grey colored circle" class="options circle circleGrey"></a>
                     </li>
                 </ul>
             </div>
         </section>
         <section class="sectionTwo" id="questionTwo">
             <div class="wrapper">
-                <h4><span>Most relatable emoji?</span></h4>
+                <h4>Most relatable emoji?</h4>
                 <ul class="questionContainer">
                     <!-- icons by Alfonso López-Sanz from the Noun Project -->
                     <li>
@@ -96,7 +96,7 @@
         </section>
         <section class="sectionThree" id="questionThree">
             <div class="wrapper">
-                <h4><span>Current weather?</span></h4>
+                <h4>Current weather?</h4>
                 <ul class="questionContainer">
                     <li>
                         <!-- weather by shashank singh from the Noun Project -->
@@ -120,7 +120,7 @@
         </section>
         <section class="sectionFour" id="questionFour">
             <div class="wrapper">
-                <h4><span>Craving...?</span></h4>
+                <h4>Craving...?</h4>
                 <ul class="questionContainer">
                     <li>
                         <!-- Salad by art shop from the Noun Project -->
@@ -149,12 +149,19 @@
         <section class="sectionFive" id="result">
             <div class="wrapper">
                 <div class="quizResultContainer">
-                    <h4><span>Ready?</span></h4>
+                    <h4>Ready?</h4>
                     <button class="btn btnLarge" role="submit">Show me my song</button>
                 </div>
             </div>
         </section>
     </main>
+
+     <footer>
+        <div class="wrapper">
+            <p>Copyright <span aria-hidden="true">&copy;</span> 2020 by <a href="https://www.annaliang.dev/" target="_blank">Anna Liang</a> and <a href="https://www.itsjaneyuan.com" target="_blank">Jane Yuan</a></p>
+            <p>Data provided by <a href="https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/">iTunes API</a></p>
+        </div>
+    </footer>
 
 
 

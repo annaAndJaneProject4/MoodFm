@@ -71,7 +71,7 @@ moodFm.getUserChoiceAndGoToNext = () => {
       e.preventDefault();
       const optionChosen = $(this).attr("data-value");
       moodFm.userChoices[i] = optionChosen;
-
+      console.log(moodFm.userChoices);
       //check next question or end (edit comment later)
       if (i < moodFm.questionInfo.length - 1) {
         moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`);
@@ -84,11 +84,18 @@ moodFm.getUserChoiceAndGoToNext = () => {
 
 //function that checks whether moodFm.userChoice has any array items that are undefined or not equal in length to 4
 moodFm.checkForAllArrayItems = function () {
-  for (let i = 0; i < moodFm.userChoices.length; i++) {
-    if (moodFm.userChoices[i] === undefined || moodFm.userChoices.length !== 4) {
-      return false;
-    }
+  console.log(moodFm.userChoices);
+  console.log(moodFm.userChoices.length !== 4);
+  if (moodFm.userChoices.length !== 4) {
+    return false;
   }
+  // for (let i = 0; i < moodFm.userChoices.length; i++) {
+  //   console.log('is for loop running?');
+  //   if (moodFm.userChoices[i] === undefined) {
+  //     console.log('we got to false!');
+  //     return false;
+  //   }
+  // }
   return true;
 };
 
@@ -138,6 +145,7 @@ moodFm.getRandomSongKeyword = () => {
 
 moodFm.isQuizComplete = function () {
   const isComplete = moodFm.checkForAllArrayItems();
+  console.log(isComplete);
   if (isComplete) {
     moodFm.calcUserScore();
     moodFm.getRandomSongKeyword();
@@ -145,7 +153,7 @@ moodFm.isQuizComplete = function () {
     //resets score to 0 when the quiz is over
     moodFm.userScore = 0;
     // reset user input array to empty when the quiz is over
-      moodFm.userChoices = []
+    moodFm.userChoices = [];
   } else {
     Swal.fire({
       icon: "error",
@@ -156,20 +164,21 @@ moodFm.isQuizComplete = function () {
 };
 
 moodFm.submitUserChoices = () => {
-  $("button").on("click", function (e) {
+  $(".btnLarge").on("click", function (e) {
     e.preventDefault();
     moodFm.isQuizComplete();
   });
 };
 
 // ------ AJAX CALL ------ //
-moodFm.getMusicResults = (keyword) => {
+moodFm.getMusicResults = (query) => {
+  console.log(query);
   $.ajax({
     url: `https://itunes.apple.com/search`,
     method: "GET",
     dataType: "json",
     data: {
-      term: keyword,
+      term: query,
       limit: 15,
       media: "music",
       attribute: "songTerm",
@@ -188,21 +197,23 @@ moodFm.getRandomSongInfo = function (resultsObject) {
 
 moodFm.displaySong = function () {
   const html = `<div class="displaySong">
-                            <h4><span>Your Musical Mood:</span><h4>
-                            <img src="./assets/displayResults.svg" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player" role="button">
+                            <h4>Your Musical Mood:<h4>
                             <div class="songDetails">
                                 <p class="songTitle">${moodFm.randomSong.trackName}</p>
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
-                                <button class="btn btnSmall btnPlay">Click to Listen</button>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
-                                <button class="btn btnSmall btnAnother">Another Song</button>
-                                <button class="btn btnSmall btnRetake">Retake the quiz</button>
+                                
+                                <img src="./assets/test1.png" aria-label="play or pause to hear this audio clip" aria-pressed="false" class="displaySongImg" alt="cartoon of a woman happily dancing next to a giant mp3 player">
+    
+                                <button class="btn btnSmall btnAnother">Next Song</button>
+                                <button class="btn btnSmall btnPlay">Click to Listen</button>
+                                <button class="btn btnSmall btnRetake">Retake the Quiz</button>
                             </div>
-                            <img src="./assets/playIcon.svg" class="playIconImg" alt="play button icon">
                         </div>
                         `;
   $(".quizResultContainer").html(html);
   moodFm.$btnAudio = $(".btnPlay");
+  moodFm.$btnAnotherSong = $(".btnAnother");
   moodFm.$sampleAudio = $("audio");
   moodFm.playOrPauseSong();
   moodFm.playAnotherSong();
@@ -221,19 +232,18 @@ moodFm.playOrPauseSong = function () {
 
 // // Another Song
 moodFm.playAnotherSong = function(){
-    moodFm.$btnAnotherSong = $(".btnAnother");
-    moodFm.$btnAnotherSong.on('click',function(){
-        console.log('its working')
-        moodFm.randomSong = moodFm.randomize(moodFm.resultsArray)
+  moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
+    moodFm.$btnAnotherSong.on('click', function(){
         moodFm.displaySong();
     })
 }
+
 // Retake the quiz
 moodFm.retakeQuiz = function(){
     moodFm.$btnRetake = $(".btnRetake")
     moodFm.$btnRetake.on('click',function(){
         location.reload();
-        $('html, body').scrollTop(0)
+        $('html, body').scrollTop(0);
     })
 }
 
@@ -243,8 +253,6 @@ moodFm.init = () => {
   moodFm.smoothScroll("#questionTwo");
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
-//   moodFm.playAnotherSong();
-
 };
 
 // ------ DOCUMENT READY ------ //
