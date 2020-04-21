@@ -434,6 +434,14 @@ a {
   }
 }
 
+@media (max-width: 700px) {
+  .btnLarge {
+    font-size: 1.3rem;
+    width: 280px;
+    height: 70px;
+  }
+}
+
 @media (max-width: 570px) {
   .btnSmall {
     width: 180px;
