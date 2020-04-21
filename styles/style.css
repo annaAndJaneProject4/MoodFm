@@ -393,26 +393,6 @@ a {
   width: 85%;
 }
 
-.circle {
-  border-radius: 50%;
-}
-
-.circleRed {
-  background-color: #e74c4c;
-}
-
-.circleYellow {
-  background-color: #F6D754;
-}
-
-.circleOrange {
-  background-color: #ffa41b;
-}
-
-.circleGrey {
-  background-color: #b6b6b6;
-}
-
 .btn {
   border: 4px double #F6F6F6;
   border-radius: 5rem;
@@ -512,23 +492,40 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  outline-offset: -15px;
-  background-color: rgba(246, 246, 246, 0.6);
+  outline-offset: -10px;
+  background-color: rgba(246, 246, 246, 0.692);
   cursor: pointer;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
 }
 
 .questionContainer li:hover {
   opacity: 0.6;
 }
 
-.questionContainer li a.circle {
-  width: 65%;
-  height: 65%;
+.questionContainer li a {
+  width: 90%;
+  height: 90%;
 }
 
-.questionContainer li a {
-  width: 100%;
-  height: 100%;
+.questionContainer .squareRed {
+  background-color: #e74c4c;
+}
+
+.questionContainer .squareYellow {
+  background-color: #F6D754;
+}
+
+.questionContainer .squareOrange {
+  background-color: #ffa41b;
+}
+
+.questionContainer .squareGrey {
+  background-color: #b6b6b6;
+}
+
+.questionContainer .selected {
+  opacity: 0.2;
 }
 
 @media (max-width: 1000px) {
@@ -933,8 +930,8 @@ main section img {
 }
 
 main .sectionOne, main .sectionThree, main .sectionFive {
-  background-color: #9ae1e5bb;
   height: 100vh;
+  background-image: url("../assets/bluePattern.jpg");
 }
 
 main .sectionOne h4, main .sectionThree h4, main .sectionFive h4 {
@@ -953,8 +950,8 @@ main .sectionOne li, main .sectionThree li, main .sectionFive li {
 }
 
 main .sectionTwo, main .sectionFour {
-  background-color: #ffefdf;
   height: 100vh;
+  background-image: url("../assets/beigePattern.jpg");
 }
 
 main .sectionTwo h4, main .sectionFour h4 {

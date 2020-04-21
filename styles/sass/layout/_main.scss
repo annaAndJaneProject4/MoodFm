@@ -13,8 +13,8 @@ main {
     } 
     
     .sectionOne, .sectionThree, .sectionFive {
-        background-color: $colorBlueLight;
         height: 100vh;
+        background-image: url("../assets/bluePattern.jpg");
 
         h4 {
             @include underlineEffect(#92D2DE);
@@ -30,8 +30,8 @@ main {
     }
 
     .sectionTwo, .sectionFour  {
-        background-color: $colorBeige;
         height: 100vh;
+        background-image: url("../assets/beigePattern.jpg");
 
         h4 {
             @include underlineEffect(#f3dec8);

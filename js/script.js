@@ -19,7 +19,7 @@ moodFm.questionInfo = [
   },
   {
     question: "#questionThree",
-    option: ["rainingWeather", "thunderWeather", "snowingWeather", "sunnyWeather"],
+    option: ["thunderWeather", "rainingWeather", "snowingWeather", "sunnyWeather"],
   },
   {
     question: "#questionFour",
@@ -30,7 +30,7 @@ moodFm.questionInfo = [
 // object of nested arrays where the variable moodFm.userMood will later get assigned one of these properties
 // moodFm.songKeyword will also take its value from one of the items in one of the nested arrays
 moodFm.results = {
-  moodSad: ["sad", "miss", "cry", "lonely", "sorry"],
+  moodSad: ["sad", "missing", "cry", "lonely", "sorry"],
   moodHappy: ["happy", "joy", "party", "dance", "excited"],
   moodAngry: ["angry", "hate", "rage", "kill", "death"],
   moodMotivation: ["strong", "power", "confident", "brave", "survive"],
@@ -58,7 +58,7 @@ moodFm.songKeyword;
 
 moodFm.startQuiz = () => {
   $(".headerStart, .startIcon").on("click", (e) => {
-    $("html").animate({
+    $("html, body").animate({
         scrollTop: $("#questionOne").offset().top,
       }, 800);
   });
@@ -67,7 +67,7 @@ moodFm.startQuiz = () => {
 moodFm.smoothScroll = (scrollTo) => {
   $("li").on("click", (e) => {
     e.preventDefault();
-    $("html").stop().animate({
+    $("html, body").stop().animate({
           scrollTop: $(scrollTo).offset().top,
         }, 800);
   });
@@ -75,14 +75,16 @@ moodFm.smoothScroll = (scrollTo) => {
 
 // function that listens for a click on each anchor element, stores that value into the moodFm.userChoice array and then triggers the page to scroll to the next section
 moodFm.getUserChoiceAndGoToNext = () => {
-  $(moodFm.questionInfo).each(function (i) {
+  $(moodFm.questionInfo).each((i) => {
     $(`${moodFm.questionInfo[i].question} a`).on("click", function (e) {
       e.preventDefault();
       // on click, the corresponding value is extracted from the "data-value" attribute and stored in a variable
       const optionChosen = $(this).attr("data-value");
       // the value from optionChosen (whatever option that the user clicks on) will be stored at a specific index in the moodFm.userChoices array 
       moodFm.userChoices[i] = optionChosen;
-      console.log(moodFm.userChoices);
+      // shows user which option they have clicked on
+      $(`${moodFm.questionInfo[i].question} a`).removeClass('selected');
+      $(this).addClass('selected');
       // if there are more questions for the user to answr, proceeds to take them to the next question
       // otherwise if there are no more questions left, takes user to the result section to see their result
       if (i < moodFm.questionInfo.length - 1) {
@@ -95,14 +97,13 @@ moodFm.getUserChoiceAndGoToNext = () => {
 };
 
 // function that checks whether the user has answered all 4 questions by checking if moodFm.userChoice has a length of 4
-moodFm.checkForAllArrayItems = function () {
+moodFm.checkForAllArrayItems = () => {
   if (moodFm.userChoices.length !== 4) {
     return false;
   }
+  // comment this jane
   for (let i = 0; i < moodFm.userChoices.length; i++) {
-    console.log('is for loop running?');
     if (moodFm.userChoices[i] === undefined) {
-      console.log('we got to false!');
       return false;
     }
   }
@@ -126,7 +127,7 @@ moodFm.calcUserScore = () => {
 };
 
 // after user score is calculated from moodFm.CalcUserScore, refer back to moodFm.results object and match the user score with one of the mood arrays nested within the object
-moodFm.calcUserMood = function () {
+moodFm.calcUserMood = () => {
   if (moodFm.userScore <= 3) {
       return moodFm.userMood = moodFm.results.moodAngry;
   } else if (moodFm.userScore >= 4 && moodFm.userScore <= 6) {
@@ -138,23 +139,21 @@ moodFm.calcUserMood = function () {
   }
 };
 
-//create a randomizer method  *********//change name
-// function that takes in any array and returns a random number based on what the length of the array is 
-moodFm.randomize = function (array) {
+// function that takes in any array and returns a random array item based on what the length of the array is 
+moodFm.getRandomArrayItem = (array) => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
 // function that calls moodFm.calcUserMood and once the user is matched with one of the mood arrays nested within the moodFm.results object
-  // then that array is passed through to moodFm.randomize and it will randomly generate ONE item from that array and then store it in moodFm.songKeyword
+  // then that array is passed through to moodFm.getRandomArrayItem and it will randomly generate ONE item from that array and then store it in moodFm.songKeyword
 moodFm.getRandomSongKeyword = () => {
   moodFm.calcUserMood();
-  moodFm.songKeyword = moodFm.randomize(moodFm.userMood);
+  moodFm.songKeyword = moodFm.getRandomArrayItem(moodFm.userMood);
 };
 
 // function that checks whether the user has completed the quiz 
-moodFm.isQuizComplete = function () {
+moodFm.isQuizComplete = () => {
   const isComplete = moodFm.checkForAllArrayItems();
-  console.log(isComplete);
   if (isComplete) {
     // if complete, the user's score is calculated, the user will be assigned a random song keyword based off of their results and then the ajax call is made
     moodFm.calcUserScore();
@@ -177,18 +176,17 @@ moodFm.isQuizComplete = function () {
 
 // when user clicks on the large submit button at the end of the section, moodFm.isQuizComplete is called and checks for quiz completion in order to decide whether or not the user will be given their results
 moodFm.submitUserChoices = () => {
-  $(".btnLarge").on("click", function () {
+  $(".btnLarge").on("click", () => {
     moodFm.isQuizComplete();
   });
 };
 
 // -------- AJAX CALL -------- //
 
-// this ajax call is only made when the quiz is completed/the condition on line 159 evaluates to true
-// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 165
+// this ajax call is only made when the quiz is completed/the condition on line 156 evaluates to true
+// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 161
 // it will use the value from moodFm.songKeyword and look through the iTunes' API for a song title containing that specfic keyword
 moodFm.getMusicResults = (query) => {
-  console.log(query);
   $.ajax({
     url: `https://itunes.apple.com/search`,
     method: "GET",
@@ -208,20 +206,20 @@ moodFm.getMusicResults = (query) => {
   });
 };
 
-moodFm.getRandomSongInfo = function (resultsObject) {
+moodFm.getRandomSongInfo = (resultsObject) => {
   // the data/result retrieved from the ajax call will be passed in as an argument and then narrowed down in order to select only the array contained within the JSON
   // this array nested within the JSON is then stored in its own variable
   moodFm.resultsArray = resultsObject.results;
 
   // moodFm.resultsArray contains 15 objects as its array items 
-  // the array is then passed into the randomize function and only ONE array item will be randomly selected out of the 15 potential items 
+  // the array is then passed into the getRandomArrayItem function and only ONE array item will be randomly selected out of the 15 potential items
     // this then gets stored into its own variable
-  moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
+  moodFm.randomSong = moodFm.getRandomArrayItem(moodFm.resultsArray);
 };
 
 // function that displays a random song title and it's corresponding artist name and audio file onto the page 
 // the user is also able to listen to the audio, get another audio or retake the quiz when the songHTML is displayed to the element with a class of ".quizResultContainer"
-moodFm.displaySong = function () {
+moodFm.displaySong = () => {
   const songHtml = `<div class="displaySong">
                             <h4>Your Musical Mood:<h4>
                             <div class="songDetails">
@@ -229,7 +227,7 @@ moodFm.displaySong = function () {
                                 <p class="artistName">${moodFm.randomSong.artistName}</p>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
                                 
-                                <img src="./assets/test1.png" class="displaySongImg" alt="cartoon of one man and two women, all wearing business attire while standing on top of two large musical notes">
+                                <img src="./assets/resultImage.png" class="displaySongImg" alt="cartoon of one man and two women, all wearing business attire while standing on top of two large musical notes as the man is holding baloons">
     
                                 <button class="btn btnSmall btnNext">Next Song</button>
                                 <button class="btn btnSmall btnPlay">Click to Listen</button>
@@ -247,8 +245,8 @@ moodFm.displaySong = function () {
 };
 
 // function that listens for a click on the play button and toggles the audio on and off depending on whether the audio is paused or not
-moodFm.playOrPauseSong = function () {
-  moodFm.$btnPlayAudio.on("click", function () {
+moodFm.playOrPauseSong = () => {
+  moodFm.$btnPlayAudio.on("click", () => {
     if (moodFm.$sampleAudio[0].paused) {
       moodFm.$sampleAudio[0].play();
     } else {
@@ -257,22 +255,22 @@ moodFm.playOrPauseSong = function () {
   });
 };
 
-// the array is passed into the randomize function again and another single array item will be randomly selected out of the 15 potential items 
+// the array is passed into the getRandomArrayItem function again and another single array item will be randomly selected out of the 15 potential items
 // the variable then gets updated again with a different array of song information
-moodFm.getNextRandomSong = function(){
-  moodFm.randomSong = moodFm.randomize(moodFm.resultsArray);
+moodFm.getNextRandomSong = () => {
+  moodFm.randomSong = moodFm.getRandomArrayItem(moodFm.resultsArray);
   // when the user clicks on the next song button, the new song is now displayed to the page 
-    moodFm.$btnAnotherSong.on('click', function(){
+    moodFm.$btnAnotherSong.on("click", () => {
         moodFm.displaySong();
     })
 }
 
 // function that allows user to retake the quiz by reloading the page and bringing the user back to the top of the html/body
-moodFm.retakeQuiz = function(){
+moodFm.retakeQuiz = () => {
     moodFm.$btnRetake = $(".btnRetake")
-    moodFm.$btnRetake.on('click',function(){
+    moodFm.$btnRetake.on("click", () => {
         location.reload();
-        $('html, body').scrollTop(0);
+        $("html, body").scrollTop(0);
     })
 }
 
@@ -287,5 +285,6 @@ moodFm.init = () => {
 // -------- DOCUMENT READY -------- //
 $(() => {
   moodFm.init();
+  // comment this Jane
   $(window).scrollTop(0);
 });
