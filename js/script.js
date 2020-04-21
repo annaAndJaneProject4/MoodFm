@@ -85,7 +85,7 @@ moodFm.getUserChoiceAndGoToNext = () => {
       // shows user which option they have clicked on
       $(`${moodFm.questionInfo[i].question} a`).removeClass('selected');
       $(this).addClass('selected');
-      // if there are more questions for the user to answr, proceeds to take them to the next question
+      // if there are more questions for the user to answer, proceeds to take them to the next question
       // otherwise if there are no more questions left, takes user to the result section to see their result
       if (i < moodFm.questionInfo.length - 1) {
         moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`);
@@ -101,7 +101,7 @@ moodFm.checkForAllArrayItems = () => {
   if (moodFm.userChoices.length !== 4) {
     return false;
   }
-  // comment this jane
+  // loop through userChoices to check if they skipped any questions
   for (let i = 0; i < moodFm.userChoices.length; i++) {
     if (moodFm.userChoices[i] === undefined) {
       return false;
@@ -277,7 +277,7 @@ moodFm.retakeQuiz = () => {
 // -------- INIT FUNCTION -------- //
 moodFm.init = () => {
   moodFm.startQuiz();
-  moodFm.smoothScroll("#questionTwo");
+  // moodFm.smoothScroll("#questionTwo");
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
 };
@@ -285,6 +285,6 @@ moodFm.init = () => {
 // -------- DOCUMENT READY -------- //
 $(() => {
   moodFm.init();
-  // comment this Jane
+  // When user hard refresh the page, home page will always be displayed.
   $(window).scrollTop(0);
 });
