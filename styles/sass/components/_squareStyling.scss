@@ -13,21 +13,44 @@
         display: flex;
         box-shadow: 3px 3px 2px #bebebe;
         align-items: center;
-        outline-offset: -15px;
-        padding: 2rem;
-        background-color: rgba(246, 246, 246, 0.6);
+        justify-content: center;
+        outline-offset: -10px;
+        background-color: rgba(246, 246, 246, 0.692);
         cursor: pointer;
+        transition: opacity .2s;
 
         &:hover {
             opacity: 0.6;
         }
 
         a {
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            height: 90%;
         }
     }
+
+    // styling to be used on all question 1 options
+    .squareRed {
+        background-color: rgb(231, 76, 76);
+    }
+
+    .squareYellow {
+        background-color: #F6D754;
+    }
+
+    .squareOrange { 
+        background-color: #ffa41b;
+    }
+
+    .squareGrey {
+        background-color: #b6b6b6;
+    }
+
+    .selected {
+        opacity: 0.2;
+    }
 }
+
 
 @media (max-width: 1000px) {
     .questionContainer{

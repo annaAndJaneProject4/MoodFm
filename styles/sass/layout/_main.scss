@@ -7,13 +7,14 @@ main {
 
         img {
             width: 100%;
+            height: 100%;
             margin: auto;
         }
     } 
     
     .sectionOne, .sectionThree, .sectionFive {
-        background-color: $colorBlueLight;
         height: 100vh;
+        background-image: url("../assets/bluePattern.jpg");
 
         h4 {
             @include underlineEffect(#92D2DE);
@@ -29,8 +30,8 @@ main {
     }
 
     .sectionTwo, .sectionFour  {
-        background-color: $colorBeige;
         height: 100vh;
+        background-image: url("../assets/beigePattern.jpg");
 
         h4 {
             @include underlineEffect(#f3dec8);
@@ -52,7 +53,7 @@ main {
     }
 }
 
-@media (max-width:700px){
+@media (max-width: 700px) {
     main{
         .sectionFive {
             h4 {
@@ -62,7 +63,7 @@ main {
     }
 }
 
-@media (max-width:500px){
+@media (max-width: 500px) {
     main {
         .sectionFive {
             h4 {

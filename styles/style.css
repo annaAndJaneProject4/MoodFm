@@ -393,26 +393,6 @@ a {
   width: 85%;
 }
 
-.circle {
-  border-radius: 50%;
-}
-
-.circleRed {
-  background-color: #e74c4c;
-}
-
-.circleYellow {
-  background-color: #F6D754;
-}
-
-.circleOrange {
-  background-color: #ffa41b;
-}
-
-.circleGrey {
-  background-color: #b6b6b6;
-}
-
 .btn {
   border: 4px double #F6F6F6;
   border-radius: 5rem;
@@ -421,6 +401,8 @@ a {
   color: #F6F6F6;
   text-shadow: 2px 2px 0 #333333;
   letter-spacing: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .btnLarge:hover, .btnSmall:hover {
@@ -442,6 +424,14 @@ a {
   font-size: 1rem;
   width: 170px;
   height: 50px;
+}
+
+@media (max-width: 700px) {
+  .btnLarge {
+    font-size: 1.3rem;
+    width: 280px;
+    height: 70px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -507,10 +497,14 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  outline-offset: -15px;
-  padding: 2rem;
-  background-color: rgba(246, 246, 246, 0.6);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  outline-offset: -10px;
+  background-color: rgba(246, 246, 246, 0.692);
   cursor: pointer;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s;
 }
 
 .questionContainer li:hover {
@@ -518,8 +512,28 @@ a {
 }
 
 .questionContainer li a {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+}
+
+.questionContainer .squareRed {
+  background-color: #e74c4c;
+}
+
+.questionContainer .squareYellow {
+  background-color: #F6D754;
+}
+
+.questionContainer .squareOrange {
+  background-color: #ffa41b;
+}
+
+.questionContainer .squareGrey {
+  background-color: #b6b6b6;
+}
+
+.questionContainer .selected {
+  opacity: 0.2;
 }
 
 @media (max-width: 1000px) {
@@ -919,12 +933,13 @@ main section {
 
 main section img {
   width: 100%;
+  height: 100%;
   margin: auto;
 }
 
 main .sectionOne, main .sectionThree, main .sectionFive {
-  background-color: #9ae1e5bb;
   height: 100vh;
+  background-image: url("../assets/bluePattern.jpg");
 }
 
 main .sectionOne h4, main .sectionThree h4, main .sectionFive h4 {
@@ -943,8 +958,8 @@ main .sectionOne li, main .sectionThree li, main .sectionFive li {
 }
 
 main .sectionTwo, main .sectionFour {
-  background-color: #ffefdf;
   height: 100vh;
+  background-image: url("../assets/beigePattern.jpg");
 }
 
 main .sectionTwo h4, main .sectionFour h4 {
