@@ -30,7 +30,7 @@ moodFm.questionInfo = [
 // object of nested arrays where the variable moodFm.userMood will later get assigned one of these properties
 // moodFm.songKeyword will also take its value from one of the items in one of the nested arrays
 moodFm.results = {
-  moodSad: ["sad", "missing", "cry", "lonely", "sorry"],
+  moodSad: ["sad", "sorrow", "cry", "lonely", "sorry"],
   moodHappy: ["happy", "joy", "party", "dance", "excited"],
   moodAngry: ["angry", "hate", "rage", "kill", "death"],
   moodMotivation: ["strong", "power", "confident", "brave", "survive"],
@@ -183,8 +183,8 @@ moodFm.submitUserChoices = () => {
 
 // -------- AJAX CALL -------- //
 
-// this ajax call is only made when the quiz is completed/the condition on line 156 evaluates to true
-// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 161
+// this ajax call is only made when the quiz is completed/the condition on line 157 evaluates to true
+// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 162
 // it will use the value from moodFm.songKeyword and look through the iTunes' API for a song title containing that specfic keyword
 moodFm.getMusicResults = (query) => {
   $.ajax({
@@ -193,8 +193,9 @@ moodFm.getMusicResults = (query) => {
     dataType: "json",
     data: {
       term: query,
-      limit: 15,
+      limit: 20,
       media: "music",
+      entity: "song",
       attribute: "songTerm",
       format: "json",
     },
@@ -211,20 +212,20 @@ moodFm.getRandomSongInfo = (resultsObject) => {
   // this array nested within the JSON is then stored in its own variable
   moodFm.resultsArray = resultsObject.results;
 
-  // moodFm.resultsArray contains 15 objects as its array items 
-  // the array is then passed into the getRandomArrayItem function and only ONE array item will be randomly selected out of the 15 potential items
+  // moodFm.resultsArray contains 20 objects as its array items 
+  // the array is then passed into the getRandomArrayItem function and only ONE array item will be randomly selected out of the 20 potential items
     // this then gets stored into its own variable
   moodFm.randomSong = moodFm.getRandomArrayItem(moodFm.resultsArray);
 };
 
-// function that displays a random song title and it's corresponding artist name and audio file onto the page 
+// function that displays a random song title and it's corresponding artist name, artist/song url page and audio file onto the page 
 // the user is also able to listen to the audio, get another audio or retake the quiz when the songHTML is displayed to the element with a class of ".quizResultContainer"
 moodFm.displaySong = () => {
   const songHtml = `<div class="displaySong">
                             <h4>Your Musical Mood:<h4>
                             <div class="songDetails">
-                                <p class="songTitle">${moodFm.randomSong.trackName}</p>
-                                <p class="artistName">${moodFm.randomSong.artistName}</p>
+                                <p class="songTitle"><a href="${moodFm.randomSong.trackViewUrl}">${moodFm.randomSong.trackName}</a></p>
+                                <p class="artistName"><a href="${moodFm.randomSong.artistViewUrl}">${moodFm.randomSong.artistName}</a></p>
                                 <audio src="${moodFm.randomSong.previewUrl}" preload="auto" type="audio/mpeg"></audio>
                                 
                                 <img src="./assets/resultImage.png" class="displaySongImg" alt="cartoon of one man and two women, all wearing business attire while standing on top of two large musical notes as the man is holding baloons">
@@ -255,7 +256,7 @@ moodFm.playOrPauseSong = () => {
   });
 };
 
-// the array is passed into the getRandomArrayItem function again and another single array item will be randomly selected out of the 15 potential items
+// the array is passed into the getRandomArrayItem function again and another single array item will be randomly selected out of the 20 potential items
 // the variable then gets updated again with a different array of song information
 moodFm.getNextRandomSong = () => {
   moodFm.randomSong = moodFm.getRandomArrayItem(moodFm.resultsArray);
@@ -277,7 +278,6 @@ moodFm.retakeQuiz = () => {
 // -------- INIT FUNCTION -------- //
 moodFm.init = () => {
   moodFm.startQuiz();
-  // moodFm.smoothScroll("#questionTwo");
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
 };
@@ -285,6 +285,6 @@ moodFm.init = () => {
 // -------- DOCUMENT READY -------- //
 $(() => {
   moodFm.init();
-  // When user hard refresh the page, home page will always be displayed.
+  // When user hard refresh the page, home page will always be displayed
   $(window).scrollTop(0);
 });

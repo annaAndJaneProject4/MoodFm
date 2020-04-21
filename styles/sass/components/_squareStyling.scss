@@ -7,13 +7,11 @@
     justify-content: center;
     
     li {
+        @include center;
         width: calc(50% - 16px);
         height: calc(50% - 16px);
         margin: 8px;
-        display: flex;
         box-shadow: 3px 3px 2px #bebebe;
-        align-items: center;
-        justify-content: center;
         outline-offset: -10px;
         background-color: rgba(246, 246, 246, 0.692);
         cursor: pointer;

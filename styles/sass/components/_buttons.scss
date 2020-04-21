@@ -2,15 +2,16 @@
 .btn {
     border: 4px double $colorWhite;
     border-radius: 5rem;
-    background: #60C0CD;
+    background: $colorBlue2;
     font-size: 1.5rem;
     color: $colorWhite;
     text-shadow: 2px 2px 0 $colorDark;
     letter-spacing: 2px;
+    transition: all 0.5s;
 
     &Large:hover, &Small:hover {
         background: transparent;
-        border: 4px double #60C0CD;
+        border: 4px double $colorBlue2;
         text-shadow: 2px 2px 0 $colorWhite;
         color: $colorDark;
     }
@@ -18,7 +19,7 @@
     // default styling for large buttons
     &Large {
         display: block;
-        margin: 2rem auto;
+        margin: 2rem auto 0;
         text-transform: uppercase;
         width: 320px;
         height: 90px;
@@ -36,8 +37,14 @@
     .btnLarge {
         font-size: 1.3rem;
         width: 280px;
-        height: 70px;
+        height: 75px;
     }
+}
+
+@media (max-width: 500px) {
+    .btnLarge {
+        margin: 1rem auto 0;
+    } 
 }
 
 @media (max-width: 570px) {
@@ -47,10 +54,10 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 410px) {
     .btnLarge {
         font-size: 1.1rem;
-        width: 220px;
-        height: 55px;
+        width: 245px;
+        height: 70px;
     }
 }

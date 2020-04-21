@@ -1,10 +1,19 @@
 .quizResultContainer {    
     .displaySong {
         h4 {
-            @include underlineEffect(#92D2DE);
+            @include underlineEffect($colorBlueUnderline);
             font-size: 3.4rem;  
             padding-bottom: 0;
         }
+
+        p {
+            line-height: 1.1;
+        }
+        
+        a:hover {
+            text-shadow: 2px 2px 0 #5EBBC9;
+        }
+
 
         .displaySongImg {
             width: 34rem;

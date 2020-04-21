@@ -401,6 +401,8 @@ a {
   color: #F6F6F6;
   text-shadow: 2px 2px 0 #333333;
   letter-spacing: 2px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .btnLarge:hover, .btnSmall:hover {
@@ -412,7 +414,7 @@ a {
 
 .btnLarge {
   display: block;
-  margin: 2rem auto;
+  margin: 2rem auto 0;
   text-transform: uppercase;
   width: 320px;
   height: 90px;
@@ -428,7 +430,13 @@ a {
   .btnLarge {
     font-size: 1.3rem;
     width: 280px;
-    height: 70px;
+    height: 75px;
+  }
+}
+
+@media (max-width: 500px) {
+  .btnLarge {
+    margin: 1rem auto 0;
   }
 }
 
@@ -439,11 +447,11 @@ a {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 410px) {
   .btnLarge {
     font-size: 1.1rem;
-    width: 220px;
-    height: 55px;
+    width: 245px;
+    height: 70px;
   }
 }
 
@@ -476,20 +484,20 @@ a {
 }
 
 .questionContainer li {
-  width: calc(50% - 16px);
-  height: calc(50% - 16px);
-  margin: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-shadow: 3px 3px 2px #bebebe;
-          box-shadow: 3px 3px 2px #bebebe;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(50% - 16px);
+  height: calc(50% - 16px);
+  margin: 8px;
+  -webkit-box-shadow: 3px 3px 2px #bebebe;
+          box-shadow: 3px 3px 2px #bebebe;
   outline-offset: -10px;
   background-color: rgba(246, 246, 246, 0.692);
   cursor: pointer;
@@ -990,6 +998,14 @@ main .sectionFive h4 {
   display: inline;
   font-size: 3.4rem;
   padding-bottom: 0;
+}
+
+.quizResultContainer .displaySong p {
+  line-height: 1.1;
+}
+
+.quizResultContainer .displaySong a:hover {
+  text-shadow: 2px 2px 0 #5EBBC9;
 }
 
 .quizResultContainer .displaySong .displaySongImg {
