@@ -996,7 +996,7 @@ main .sectionTwo ul, main .sectionFour ul {
 }
 
 main .sectionTwo li, main .sectionFour li {
-  outline: 4px double #ffefdf;
+  outline: 4px double #EDCCAB;
 }
 
 main .sectionFive h4 {
