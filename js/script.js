@@ -181,7 +181,7 @@ moodFm.getMusicResults = (query) => {
   $.ajax({
     url: `https://itunes.apple.com/search`,
     method: "GET",
-    dataType: "json",
+    dataType: "jsonp",
     data: {
       term: query,
       limit: 20,
