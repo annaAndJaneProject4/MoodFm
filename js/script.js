@@ -54,22 +54,13 @@ moodFm.songKeyword;
 
 // -------- FUNCTIONS -------- //
 
-// ---- functions that control the automatic scrolling of one section to the next on click ---- //
-
-moodFm.startQuiz = () => {
-  $(".headerStart, .startIcon").on("click", (e) => {
-    $("html, body").animate({
-        scrollTop: $("#questionOne").offset().top,
-      }, 800);
-  });
-};
-
-moodFm.smoothScroll = (scrollTo) => {
-  $("li").on("click", (e) => {
+// function that control the automatic scrolling of one section to the next on click
+moodFm.smoothScroll = (scrollTo, element) => {
+  $(element).on("click", (e) => {
     e.preventDefault();
     $("html, body").stop().animate({
           scrollTop: $(scrollTo).offset().top,
-        }, 800);
+        }, 650);
   });
 };
 
@@ -88,9 +79,9 @@ moodFm.getUserChoiceAndGoToNext = () => {
       // if there are more questions for the user to answer, proceeds to take them to the next question
       // otherwise if there are no more questions left, takes user to the result section to see their result
       if (i < moodFm.questionInfo.length - 1) {
-        moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`);
+        moodFm.smoothScroll(`${moodFm.questionInfo[i + 1].question}`, "li");
       } else {
-        moodFm.smoothScroll("#result");
+        moodFm.smoothScroll("#result", "li");
       }
     });
   });
@@ -183,8 +174,8 @@ moodFm.submitUserChoices = () => {
 
 // -------- AJAX CALL -------- //
 
-// this ajax call is only made when the quiz is completed/the condition on line 157 evaluates to true
-// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 162
+// this ajax call is only made when the quiz is completed/the condition on line 148 evaluates to true
+// the variable (moodFm.songKeyword) that stores the randomly generated keyword for the user is passed in as an argument when this functon gets called on line 153
 // it will use the value from moodFm.songKeyword and look through the iTunes' API for a song title containing that specfic keyword
 moodFm.getMusicResults = (query) => {
   $.ajax({
@@ -277,7 +268,7 @@ moodFm.retakeQuiz = () => {
 
 // -------- INIT FUNCTION -------- //
 moodFm.init = () => {
-  moodFm.startQuiz();
+  moodFm.smoothScroll("#questionOne", ".headerStart, .startIcon");
   moodFm.getUserChoiceAndGoToNext();
   moodFm.submitUserChoices();
 };
