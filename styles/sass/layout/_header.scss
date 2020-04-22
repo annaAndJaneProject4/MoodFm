@@ -149,7 +149,7 @@ header {
 
 @media (max-width: 860px) {
     header {
-        align-items: flex-end;
+        align-items: center;
 
         h1 {
             font-size: 7.5rem;
@@ -171,7 +171,6 @@ header {
 
         .headerContent {
             flex-direction: column;
-            // position: static;
             margin-bottom: 1rem;
             align-items: center;
         }

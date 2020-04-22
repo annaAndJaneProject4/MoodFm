@@ -46,8 +46,26 @@ a {
     }
 }
 
+@media (max-width: 615px) {
+    h1 {
+        text-shadow: 3px 4px $colorPaleYellow, 5px 6px $colorDarkBeige;
+    }
+}
+
+@media (max-width: 520px) {
+    h1 {
+        text-shadow: 2px 3px $colorPaleYellow, 4px 5px $colorDarkBeige;
+    }
+}
+
 @media (max-width: 500px){
     h4 {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 435px) {
+    h1 {
+        text-shadow: 1px 2px $colorPaleYellow, 3px 4px $colorDarkBeige;
     }
 }

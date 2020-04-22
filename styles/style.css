@@ -381,9 +381,27 @@ a {
   }
 }
 
+@media (max-width: 615px) {
+  h1 {
+    text-shadow: 3px 4px #e6e6d8, 5px 6px #c6a39a;
+  }
+}
+
+@media (max-width: 520px) {
+  h1 {
+    text-shadow: 2px 3px #e6e6d8, 4px 5px #c6a39a;
+  }
+}
+
 @media (max-width: 500px) {
   h4 {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 435px) {
+  h1 {
+    text-shadow: 1px 2px #e6e6d8, 3px 4px #c6a39a;
   }
 }
 
@@ -764,9 +782,9 @@ header .musicNotesIcon {
 
 @media (max-width: 860px) {
   header {
-    -webkit-box-align: end;
-        -ms-flex-align: end;
-            align-items: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   header h1 {
     font-size: 7.5rem;
