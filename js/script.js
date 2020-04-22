@@ -221,9 +221,9 @@ moodFm.displaySong = () => {
                                 
                                 <img src="./assets/resultImage.png" class="displaySongImg" alt="cartoon of one man and two women, all wearing business attire while standing on top of two large musical notes as the man is holding baloons">
     
-                                <button class="btn btnSmall btnNext">Next Song</button>
-                                <button class="btn btnSmall btnPlay">Click to Listen</button>
-                                <button class="btn btnSmall btnRetake">Retake the Quiz</button>
+                                <button class="btn btnSmall btnNext" type="button">Next Song</button>
+                                <button class="btn btnSmall btnPlay" type="button" aria-pressed="false">Click to Listen</button>
+                                <button class="btn btnSmall btnRetake" type="reset">Retake the Quiz</button>
                             </div>
                         </div>
                         `;
