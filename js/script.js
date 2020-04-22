@@ -88,7 +88,7 @@ moodFm.getUserChoiceAndGoToNext = () => {
 };
 
 // function that checks whether the user has answered all 4 questions by checking if moodFm.userChoice has a length of 4
-moodFm.checkForAllArrayItems = () => {
+moodFm.checkArrayLengthAndItems = () => {
   if (moodFm.userChoices.length !== 4) {
     return false;
   }
@@ -144,7 +144,7 @@ moodFm.getRandomSongKeyword = () => {
 
 // function that checks whether the user has completed the quiz 
 moodFm.isQuizComplete = () => {
-  const isComplete = moodFm.checkForAllArrayItems();
+  const isComplete = moodFm.checkArrayLengthAndItems();
   if (isComplete) {
     // if complete, the user's score is calculated, the user will be assigned a random song keyword based off of their results and then the ajax call is made
     moodFm.calcUserScore();
@@ -228,6 +228,7 @@ moodFm.displaySong = () => {
                         </div>
                         `;
   $(".quizResultContainer").html(songHtml);
+  // cache jquery selctors once they are displayed on the page
   moodFm.$btnPlayAudio = $(".btnPlay");
   moodFm.$btnAnotherSong = $(".btnNext");
   moodFm.$sampleAudio = $("audio");
