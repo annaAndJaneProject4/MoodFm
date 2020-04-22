@@ -188,7 +188,7 @@ moodFm.getMusicResults = (query) => {
       media: "music",
       entity: "song",
       attribute: "songTerm",
-      format: "json",
+      format: "jsonp",
     },
   }).then((results) => {
     // then once this ajax call is successful, the data that is retrieved is passed into moodFm.getRandomSongInfo 
