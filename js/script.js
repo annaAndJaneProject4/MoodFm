@@ -179,7 +179,7 @@ moodFm.submitUserChoices = () => {
 // it will use the value from moodFm.songKeyword and look through the iTunes' API for a song title containing that specfic keyword
 moodFm.getMusicResults = (query) => {
   $.ajax({
-    url: `http://proxy.hackeryou.com`,
+    url: `https://proxy.hackeryou.com`,
     method: "GET",
     dataType: "json",
     paramsSerializer: function (params) {
