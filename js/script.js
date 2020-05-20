@@ -198,7 +198,7 @@ moodFm.getMusicResults = (query) => {
         entity: "song",
         attribute: "songTerm",
         method: "GET",
-        dataType: "json",
+        dataType: "jsonp",
       },
       xmlToJSON: false,
       useCache: false,
