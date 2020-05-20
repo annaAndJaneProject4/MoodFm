@@ -179,21 +179,34 @@ moodFm.submitUserChoices = () => {
 // it will use the value from moodFm.songKeyword and look through the iTunes' API for a song title containing that specfic keyword
 moodFm.getMusicResults = (query) => {
   $.ajax({
-    url: `https://itunes.apple.com/search`,
+    url: `http://proxy.hackeryou.com`,
     method: "GET",
-    dataType: "jsonp",
+    dataType: "json",
+    paramsSerializer: function (params) {
+      return Qs.stringify(params, { arrayFormat: "brackets" });
+    },
     data: {
-      term: query,
-      limit: 20,
-      media: "music",
-      entity: "song",
-      attribute: "songTerm",
-      format: "json",
+      reqUrl: `https://itunes.apple.com/search`,
+      proxyHeaders: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+      params: {
+        term: query,
+        limit: 20,
+        media: "music",
+        entity: "song",
+        attribute: "songTerm",
+        method: "GET",
+        dataType: "json",
+      },
+      xmlToJSON: false,
+      useCache: false,
     },
   }).then((results) => {
-    // then once this ajax call is successful, the data that is retrieved is passed into moodFm.getRandomSongInfo 
+    // then once this ajax call is successful, the data that is retrieved is passed into moodFm.getRandomSongInfo
     moodFm.getRandomSongInfo(results);
-    // and the song will be displayed on the page 
+    // and the song will be displayed on the page
     moodFm.displaySong();
   });
 };
