@@ -31,7 +31,7 @@ moodFm.questionInfo = [
 // moodFm.songKeyword will also take its value from one of the items in one of the nested arrays
 moodFm.results = {
   moodSad: ["sad", "sorrow", "cry", "lonely", "sorry"],
-  moodHappy: ["happy", "joy", "party", "dance", "excited"],
+  moodHappy: ["happy", "joy", "party", "dancing", "excited"],
   moodAngry: ["angry", "hate", "rage", "kill", "death"],
   moodMotivation: ["strong", "power", "confident", "brave", "survive"],
 };
@@ -150,7 +150,7 @@ moodFm.isQuizComplete = () => {
     moodFm.calcUserScore();
     moodFm.getRandomSongKeyword();
     // the ajax call will take in the random song keyword assigned to the user as an argument 
-    moodFm.getMusicResults(moodFm.songKeyword);
+    moodFm.getMusicResults('excited');
     // resets score to 0 when the quiz is over
     moodFm.userScore = 0;
     // reset user input array to empty when the quiz is over
@@ -192,7 +192,7 @@ moodFm.getMusicResults = (query) => {
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
       params: {
-        term: query,
+        term:query,
         limit: 20,
         media: "music",
         entity: "song",
@@ -208,7 +208,9 @@ moodFm.getMusicResults = (query) => {
     moodFm.getRandomSongInfo(results);
     // and the song will be displayed on the page
     moodFm.displaySong();
-  });
+    console.log(results)
+
+  })
 };
 
 moodFm.getRandomSongInfo = (resultsObject) => {
